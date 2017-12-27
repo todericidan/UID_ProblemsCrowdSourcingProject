@@ -3,7 +3,7 @@
 }
 
 .user-img {
-    height: 50;
+    height: 50px;
     margin-top: 6px;
 }
 
@@ -31,11 +31,43 @@
 
 .container {
     width: 85%;
-    height: 200px;
     margin: auto;
     margin-top: 40px;
 }
 
-.drop-text{
-    font-size: small;
+.filter-drop {
+    margin: 10px;
+}
+
+.date-label {
+    margin-left: 20px;
+}
+
+.date-input {
+    margin-left: 10px !important;
+}
+
+.btn-right {
+    float: right;
+    margin-left: 7px;
+}
+
+.btn-faded {
+    color: gray;
+}
+
+.collapsible {
+    margin: 0;
+}
+
+.collapsible-body {
+    display: none;
+    border-bottom: 1px solid #ddd;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.button-row {
+    margin-right: 10px !important;
 }
