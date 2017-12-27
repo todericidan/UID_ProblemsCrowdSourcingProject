@@ -20,7 +20,8 @@
             </li>
 
             <li class="active"><a>City Overview</a></li>
-            <li><a>Statistics</a></li>
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-button" href="#!" data-activates="statistics-dropdown">Statistics</a></li>
             <li><a>Help</a></li>
             <li><a>Contact</a></li>
             <li><a>Jane Doe</a></li>
@@ -28,3 +29,16 @@
         </ul>
     </div>
 </nav>
+
+<!-- Dropdown Structure -->
+<ul id="statistics-dropdown" class="dropdown-content">
+    <li class="drop-text"><a href="#!">Community Charts</a></li>
+    <li class="divider"></li>
+    <li class="drop-text"><a href="#!">Problem Statistics</a></li>
+</ul>
+
+
+<script language="JavaScript">
+    $(".dropdown-button").dropdown();
+
+</script>
