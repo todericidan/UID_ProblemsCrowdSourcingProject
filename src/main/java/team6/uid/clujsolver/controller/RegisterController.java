@@ -5,23 +5,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+/**
+ * Created by dell on 12/28/2017.
+ */
 @Controller
-public class LoginController {
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+public class RegisterController {
+    @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String showLoginPage(){
 
-        return "login";
+        return "register";
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String authenticate(@RequestParam("email") String email, @RequestParam("password") String password){
 
-        System.out.println(email);
-        System.out.println(password);
-        if(email.equals("user") && password.equals("pass")){
-            return "communityProblemsView";
-        }
-        return "login";
+
+        return "register";
     }
 }

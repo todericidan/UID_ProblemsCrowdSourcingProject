@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Cluj Solver Login</title>
+    <title>Cluj Solver Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 
@@ -17,8 +17,9 @@
 </head>
 
 <body>
-<c:url var="loginAction" value="/login"/>
-<c:url var="register" value="/register"/>
+<c:url var="registerAction" value="/register"/>
+<c:url var="login" value="/login"/>
+
 <div class="navbar-fixed">
     <nav class="cyan darken-3">
         <div class="nav-wrapper navbar">
@@ -38,33 +39,56 @@
 </div>
 <div class="section white">
     <div class="row container">
-        <h5 class="header">Sign in</h5>
-        <span class="grey-text text-darken-1 lighten-3">Enter your credentials below</span>
+        <h5 class="header">Register</h5>
+        <span class="grey-text text-darken-1 lighten-3">One more step before we start. Enter your personal information below.</span>
+        <form method="POST" action="${registerAction}">
+
         <div class="row">
-            <form method="POST" action="${loginAction}">
                 <div class="input-field col s3">
                     <input id="email" name="email" type="text" class="validate">
                     <label for="email">Email</label>
                 </div>
+
+                <div class="input-field col s3">
+                    <input id="name" name="name" type="text" class="validate">
+                    <label for="name">Name</label>
+                </div>
+
                 <div class="input-field col s3">
                     <input id="password" name="password" type="password" class="validate">
                     <label for="password">Password</label>
                 </div>
 
-                <div class="col s3">
-                    <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Sign in</button>
+                <div class="input-field col s3">
+                    <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate">
+                    <label for="passwordConfirm">Password Confirmation</label>
                 </div>
-            </form>
-
         </div>
         <div class="row">
-            <div class="col">
-                <p class="grey-text text-darken-3 lighten-3">Don't have an account?</p>
-            </div>
-            <div class="col">
-                <a class="waves-effect waves-light btn grey lighten-3 btn-faded" href="${register}">Register here</a>
+                <h5 class="header">What are you up to?</h5>
+                <p>
+                    <input name="accountType" type="radio" id="simpleUser" />
+                    <label for="simpleUser">I only want to signal community problems</label>
+                </p>
+                <p>
+                    <input name="accountType" type="radio" id="solverUser" />
+                    <label for=solverUser>I want to both signal and solve problems</label>
+                </p>
+        </div>
+
+            <div class="row">
+                <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Register</button>
             </div>
 
+
+        </form>
+        <div class="row">
+            <div class="col">
+                <p class="grey-text text-darken-3 lighten-3">Already have an account?</p>
+            </div>
+            <div class="col">
+                <a class="waves-effect waves-light btn grey lighten-3 btn-faded" href="${login}">Sign in here</a>
+            </div>
         </div>
     </div>
 </div>

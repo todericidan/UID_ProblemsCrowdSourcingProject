@@ -84,3 +84,9 @@
 .section {
     padding: 0px;
 }
+
+.paralax-small{
+    height: 150px !important;
+    margin-left: -1px;
+
+}
