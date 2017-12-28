@@ -37,7 +37,9 @@
 <ul id="statistics-dropdown" class="dropdown-content">
     <li class="drop-text"><a href="#!">Community Charts</a></li>
     <li class="divider"></li>
-    <li class="drop-text"><a href="#!">Problem Statistics</a></li>
+    <li class="drop-text">
+        <a href="${problemStats}">Problem Statistics</a>
+    </li>
 </ul>
 
 

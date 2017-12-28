@@ -11,7 +11,6 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="clujsolver.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/clujsolver.css" />
 
 </head>
@@ -22,7 +21,7 @@
 <div class="navbar-fixed">
     <nav class="cyan darken-3">
         <div class="nav-wrapper navbar">
-            <a href="#" class="brand-logo logo"><img class="logo-img" src="${pageContext.request.contextPath}/resources/img/logo.png"></img>
+            <a href="#" class="brand-logo logo"><img class="logo-img" src="${pageContext.request.contextPath}/resources/img/logo.png">
             </a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">

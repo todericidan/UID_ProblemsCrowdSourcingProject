@@ -11,7 +11,6 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="clujsolver.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/clujsolver.css" />
 
 </head>
