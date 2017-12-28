@@ -71,3 +71,16 @@
 .button-row {
     margin-right: 10px !important;
 }
+
+.para-img {
+    max-width: 100%;
+}
+
+.paralax-custom {
+    height: 290px;
+    margin-left: -1px;
+}
+
+.section {
+    padding: 0px;
+}
