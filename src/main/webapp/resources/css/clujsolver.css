@@ -90,3 +90,31 @@
     margin-left: -1px;
 
 }
+
+
+.card-top-title {
+    padding: 10px !important;
+}
+
+.problem-title {
+    margin-left: 12px !important;
+    padding: 12px !important;
+}
+
+.problem-media {
+    margin-left: 12px !important;
+}
+
+.problem-urgency {
+    margin-left: 22px;
+}
+
+.terms-check {
+    margin-left: 22px;
+}
+.container-form {
+    width: 85%;
+    margin: auto;
+    padding: 14px;
+    margin-top: 40px;
+}

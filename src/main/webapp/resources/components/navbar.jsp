@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
+<c:url var="newProblem" value="/newProblem"/>
+
 
 <nav class="cyan darken-3">
     <div class="navbar-fixed">
@@ -10,7 +12,7 @@
             </a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a class="waves-effect waves-light btn amber darken-1">New Problem</a></li>
+                <li><a href="${newProblem}"class="waves-effect waves-light btn amber darken-1">New Problem</a></li>
                 <li class="card search-bar grey lighten-5">
                     <form>
                         <div class="input-field">
