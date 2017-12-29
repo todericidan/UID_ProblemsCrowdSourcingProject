@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
+<c:url var="problemStats" value="/problemStats"/>
 
 <nav class="cyan darken-3">
     <div class="navbar-fixed">
