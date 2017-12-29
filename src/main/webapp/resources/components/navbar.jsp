@@ -3,7 +3,7 @@
 
 
 <c:url var="newProblem" value="/newProblem"/>
-
+<c:url var="cityOverview" value="/problems"/>
 <c:url var="problemStats" value="/problemStats"/>
 
 <nav class="cyan darken-3">
@@ -23,7 +23,7 @@
                     </form>
                 </li>
 
-                <li class="active"><a>City Overview</a></li>
+                <li class="active"><a href="${cityOverview}">City Overview</a></li>
                 <!-- Dropdown Trigger -->
                 <li><a class="dropdown-button" href="#!" data-activates="statistics-dropdown">Statistics</a></li>
                 <li><a>Help</a></li>
