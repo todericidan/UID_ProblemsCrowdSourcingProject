@@ -13,7 +13,7 @@
             </a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href=""${newProblem}"class="waves-effect waves-light btn amber darken-1">New Problem</a></li>
+                <li><a href="${newProblem}"class="waves-effect waves-light btn amber darken-1">New Problem</a></li>
                 <li class="card search-bar grey lighten-5">
                     <form>
                         <div class="input-field">
