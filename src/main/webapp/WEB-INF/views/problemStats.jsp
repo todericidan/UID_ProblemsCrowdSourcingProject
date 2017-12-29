@@ -70,12 +70,15 @@
     var monthData = [<%= join(months, ",") %>];
     var userData = [<%= join(users, ",") %>];
 
+
 </script>
 
 
 <jsp:include page="../../resources/components/navbar.jsp"/>
 
 <body class="blue-grey lighten-5">
+
+
 
 <div class="row">
 
@@ -157,6 +160,7 @@
 </div>
 
 
+
 <script language="Javascript">
     $(document).ready(function() {
         $('select').material_select();
@@ -168,6 +172,8 @@
 
     });
 </script>
+
+
 
 </body>
 
