@@ -9,7 +9,7 @@
 <nav class="cyan darken-3">
     <div class="navbar-fixed">
         <div class="nav-wrapper navbar">
-            <a href="#" class="brand-logo logo"><img class="logo-img" src="${pageContext.request.contextPath}/resources/img/logo.png"></img>
+            <a href="${cityOverview}" class="brand-logo logo"><img class="logo-img" src="${pageContext.request.contextPath}/resources/img/logo.png"></img>
             </a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">

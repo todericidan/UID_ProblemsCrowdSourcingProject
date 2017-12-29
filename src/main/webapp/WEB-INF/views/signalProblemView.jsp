@@ -2,7 +2,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page session="false" %>
 <html>
 
 <head>
@@ -49,12 +48,12 @@
         </div>
 
         <div class="row">
-            <div class="input-field col s3">
+            <div class="input-field col s4">
                 <select class="filter-drop">
-                    <option value="" disabled selected>Type</option>
-                    <option value="1">Illegal Parking</option>
-                    <option value="2">Disturbing Public Order</option>
-                    <option value="3">Water networks</option>
+                    <option value="" disabled selected>Category</option>
+                    <c:forEach items="${problemCategories}" var="category">
+                        <option value="${category}">${category.title()}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>

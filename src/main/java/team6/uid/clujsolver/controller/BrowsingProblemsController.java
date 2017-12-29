@@ -6,12 +6,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import team6.uid.clujsolver.model.Category;
+import team6.uid.clujsolver.model.Popularity;
+import team6.uid.clujsolver.model.Status;
+import team6.uid.clujsolver.model.Urgency;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class BrowsingProblemsController {
 
     @RequestMapping(value = "/problems",method = RequestMethod.GET)
-    public String showCommunityProblems(){
+    public String showCommunityProblems(HttpSession session){
+
+        session.setAttribute("problemCategories", Category.values());
+        session.setAttribute("popularityTypes", Popularity.values());
+        session.setAttribute("statusTypes", Status.values());
+        session.setAttribute("urgencyTypes", Urgency.values());
 
         return "communityProblemsView";
     }

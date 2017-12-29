@@ -2,7 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page session="false" %>
+
 <html>
 
 <head>
@@ -29,39 +29,39 @@
                 <div class="collapsible-header "><i class="material-icons">filter_list</i>Filters</div>
                 <div class="collapsible-body ">
                     <div class="row">
-                        <div class="input-field col s3">
+                        <div class="input-field col s4">
                             <select class="filter-drop" multiple>
-                                <option value="" disabled selected>Type</option>
-                                <option value="1">Illegal Parking</option>
-                                <option value="2">Disturbing Public Order</option>
-                                <option value="3">Water networks</option>
+                                <option value="" disabled selected>Category</option>
+                                <c:forEach items="${problemCategories}" var="category">
+                                    <option value="${category}">${category.title()}</option>
+                                </c:forEach>
                             </select>
                         </div>
 
                         <div class="input-field col s3">
                             <select class="filter-drop" multiple>
                                 <option value="" disabled selected>Status</option>
-                                <option value="1">Solved</option>
-                                <option value="2">Getting Solved</option>
-                                <option value="3">Unsolved</option>
+                                <c:forEach items="${statusTypes}" var="status">
+                                    <option value="${status}">${status.title()}</option>
+                                </c:forEach>
                             </select>
                         </div>
 
-                        <div class="input-field col s3">
+                        <div class="input-field col s2">
                             <select class="filter-drop" multiple>
                                 <option value="" disabled selected>Urgency</option>
-                                <option value="1">High</option>
-                                <option value="2">Medium</option>
-                                <option value="3">Low</option>
+                                <c:forEach items="${urgencyTypes}" var="urgency">
+                                    <option value="${urgency}">${urgency.title()}</option>
+                                </c:forEach>
                             </select>
                         </div>
 
                         <div class="input-field col s3">
                             <select class="filter-drop" multiple>
-                                <option value="" disabled selected>Amount of votes</option>
-                                <option value="1">Popular</option>
-                                <option value="2">Average</option>
-                                <option value="3">Unpopular</option>
+                                <option value="" disabled selected>Popularity</option>
+                                <c:forEach items="${popularityTypes}" var="popularity">
+                                    <option value="${popularity}">${popularity.title()}</option>
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="date-label">
