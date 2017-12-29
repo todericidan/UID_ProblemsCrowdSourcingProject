@@ -1,34 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ page import="java.io.*" %>
-<%@ page import="java.util.*" %>
-
-<%!
-    // --- String Join Function converts from Java array to javascript string.
-    public String join(ArrayList<?> arr, String del)
-    {
-
-        StringBuilder output = new StringBuilder();
-
-        for (int i = 0; i < arr.size(); i++)
-        {
-
-            if (i > 0) output.append(del);
-
-            // --- Quote strings, only, for JS syntax
-            if (arr.get(i) instanceof String) output.append("\"");
-            output.append(arr.get(i));
-            if (arr.get(i) instanceof String) output.append("\"");
-        }
-
-        return output.toString();
-    }
-%>
-
-
 <html>
 <head>
-    <title>Cluj Solver Problems Chart</title>
+    <title>Charts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
     <!-- Compiled and minified CSS -->
@@ -36,35 +10,10 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript" src="https://cdn.zingchart.com/zingchart.min.js"></script>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/clujsolver.css" />
-
 </head>
 <body>
-
-
-<script>
-    <%
-       // --- Create two Java Arrays
-        ArrayList<String> months = new ArrayList<String>();
-        ArrayList<Integer> users = new ArrayList<Integer>();
-
-       // --- Loop 10 times and create 10 string dates and 10 users
-        int counter = 1;
-        while(counter < 11)
-        {
-            months.add("Aug " + counter);
-            users.add(counter++);
-        }
-    %>
-
-    // --- add a comma after each value in the array and convert to javascript string representing an array
-    var monthData = [<%= join(months, ",") %>];
-    var userData = [<%= join(users, ",") %>];
-
-
-</script>
 
 
 <jsp:include page="../../resources/components/navbar.jsp"/>
@@ -124,7 +73,73 @@
 
         </ul>
 
-        <div id="myChart" style="height:450px"></div>
+        <div id="myTable" style="height:700px">
+
+            <h1 id="chartTitle" style="text-align:center">Top 10 Problem ${title} Of the Week</h1>
+            <table border ="0">
+                <tr>
+                    <td>1</td>
+                    <td>dorel_instalatorul62</td>
+                    <td>2280</td>
+                    <td>points</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>ridicariauto_avis</td>
+                    <td>2300</td>
+                    <td>points</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>ionion_canalizari</td>
+                    <td>1700</td>
+                    <td>points</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>dorel_instalatorul63</td>
+                    <td>1600</td>
+                    <td>points</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>ridicariauto_avis2</td>
+                    <td>1580</td>
+                    <td>points</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>toni_canalizari</td>
+                    <td>1550</td>
+                    <td>points</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>dorel_instalatorul633</td>
+                    <td>1470</td>
+                    <td>points</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>ridicariauto_avi321s</td>
+                    <td>1450</td>
+                    <td>points</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>tractorari_bat</td>
+                    <td>1350</td>
+                    <td>points</td>
+                </tr>
+                <tr>
+                <td>10</td>
+                <td>interioare_instalatii_garnituri</td>
+                <td>1000</td>
+                <td>points</td>
+                </tr>
+
+            </table>
+        </div>
 
 
     </div>
@@ -143,43 +158,7 @@
 
     });
 </script>
-
-
-
 </body>
-
-
-<script>
-    window.onload = function() {
-        zingchart.render({
-            id: "myChart",
-            width: "100%",
-            height: 400,
-            data: {
-                "type": "bar",
-                "title": {
-                    "text": "All Problems Statistics"
-                },
-                "scale-x": {
-                    "labels": monthData,
-                    "label":{
-                        "text":"Dates",
-                        "font-size":14,
-                        "offset-y":15
-                    }
-                },
-                "plot": {
-                    "line-width": 1,
-                    "background-color": "#616161"
-                },
-                "series": [{
-                    "values": userData
-                }]
-            }
-        });
-    };
-</script>
-
 
 
 </body>

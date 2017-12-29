@@ -5,6 +5,15 @@
 <c:url var="newProblem" value="/newProblem"/>
 <c:url var="cityOverview" value="/problems"/>
 <c:url var="problemStats" value="/problemStats"/>
+<c:url var="solversChart" value="/chartSolvers"/>
+<c:url var="notifiersChart" value="/chartNotifiers"/>
+
+<style type="text/css">
+
+#chart-options{
+    display:none
+}
+</style>
 
 <nav class="cyan darken-3">
     <div class="navbar-fixed">
@@ -13,7 +22,7 @@
             </a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="${newProblem}"class="waves-effect waves-light btn amber darken-1">New Problem</a></li>
+                <li><a class="waves-effect waves-light btn amber darken-1" href="${newProblem}" >New Problem</a></li>
                 <li class="card search-bar grey lighten-5">
                     <form>
                         <div class="input-field">
@@ -38,15 +47,34 @@
 
 <!-- Dropdown Structure -->
 <ul id="statistics-dropdown" class="dropdown-content">
-    <li class="drop-text"><a href="#!">Community Charts</a></li>
-    <li class="divider"></li>
-    <li class="drop-text">
+    <li class="drop-text" id="stats-btn">
         <a href="${problemStats}">Problem Statistics</a>
     </li>
+    <li class="divider"></li>
+
+    <li class="drop-text" id="charts-btn" disabled="true"><a href="#!">Community Charts</a></li>
+    <ul id="chart-options" >
+        <li><a href="${notifiersChart}">Notifiers</a></li>
+        <li><a href="${solversChart}">Solvers</a></li>
+    </ul>
+
+
 </ul>
 
 
 <script language="JavaScript">
     $(".dropdown-button").dropdown();
+
+    document.getElementById("charts-btn").addEventListener("mouseover", showOptions);
+    document.getElementById("stats-btn").addEventListener("mouseover", hideOptions);
+
+    function showOptions() {
+        document.getElementById("chart-options").style.display = "block";
+        document.getElementById("charts-btn").style.backgroundColor="#5a6068";
+    }
+    function hideOptions() {
+        document.getElementById("chart-options").style.display = "none";
+        document.getElementById("charts-btn").style.backgroundColor="#ffffff";
+    }
 
 </script>
