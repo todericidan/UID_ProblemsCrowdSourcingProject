@@ -3,6 +3,9 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %>
+
+<c:url var="cityOverview" value="/problems"/>
+
 <html>
 
 <head>
@@ -49,7 +52,12 @@
                                 <option value="3">Water networks</option>
                     </select>
                 </span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">X:200 , Y:492</span>
+                <span class="grey-text text-darken-1 lighten-3 col s2">
+                      <a href="${cityOverview}" class="brand-logo logo">
+                          <img class="logo-img"
+                               src="${pageContext.request.contextPath}/resources/img/singleProblem.PNG">
+                      </a>
+                </span>
                 <span class="grey-text text-darken-1 lighten-3 col s2">23.12.2015</span>
                 <span class="grey-text text-darken-1 lighten-3 col s2"></span>
             </div>
@@ -104,8 +112,10 @@
 
         <div class="row">
             <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s4" onclick="">UpVote:
-                    <i class="small material-icons">thumb_up</i>
+                <span class="grey-text text-darken-1 lighten-3 col s4">UpVote:
+                    <a href="${cityOverview}">
+                        <i class="small material-icons">thumb_up</i>
+                    </a>
                 </span>
                 <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                 <span class="grey-text text-darken-1 lighten-3 col s2"></span>
@@ -117,7 +127,9 @@
         <div class="row">
             <div class="card container grey lighten-5">
                 <span class="grey-text text-darken-1 lighten-3 col s4">DownVote:
-                <i class="small material-icons">thumb_down</i>
+                    <a href="${cityOverview}">
+                        <i class="small material-icons">thumb_down</i>
+                    </a>
                 </span>
                 <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                 <span class="grey-text text-darken-1 lighten-3 col s2"></span>
@@ -128,7 +140,7 @@
 
         <div class="row">
             <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s4">Amount of Votes: </span>
+                <span class="grey-text text-darken-1 lighten-3 col s4">Amount of Votes: ${numberOfVotes}</span>
                 <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                 <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                 <span class="grey-text text-darken-1 lighten-3 col s2"></span>
@@ -139,7 +151,7 @@
         <div class="row">
             <div class="card container grey lighten-5">
                 <span class="grey-text text-darken-1 lighten-3 col s4">Comment:
-                <i id="thumb_up" class="small material-icons">comment</i>
+                    <i id="comment" class="small material-icons">comment</i>
                 </span>
                 <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                 <span class="grey-text text-darken-1 lighten-3 col s2"></span>
@@ -153,7 +165,7 @@
 </body>
 
 <script language="Javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('select').material_select();
     });
 </script>
