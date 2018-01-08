@@ -1,9 +1,11 @@
 package team6.uid.clujsolver.model;
 
+import java.io.Serializable;
+
 /**
  * Created by dell on 12/29/2017.
  */
-public enum Urgency {
+public enum Urgency implements Serializable {
     HIGH("High"),
     MEDIUM("Medium"),
     LOW("Low");

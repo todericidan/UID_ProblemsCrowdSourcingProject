@@ -1,9 +1,11 @@
 package team6.uid.clujsolver.model;
 
+import java.io.Serializable;
+
 /**
  * Created by dell on 12/29/2017.
  */
-public enum Category {
+public enum Category implements Serializable {
     SOCIAL_ASSISTANCE("Social assistance"),
     WASTE_STORAGE("Waste storage"),
     UNAUTHORIZED_CONSTRUCTIONS("Unauthorized constructions"),

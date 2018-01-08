@@ -1,0 +1,52 @@
+[ {
+        "id":"1",
+        "title":"Reflector Broken",
+        "description":"A reflector is broken on the street. The light keeps flickering on and off and it disturbs drivers.",
+        "latitude":"46.769342",
+        "longitude":"23.589673",
+        "address":"Old City Center",
+        "urgencyLevel":"MEDIUM",
+        "category":"PUBLIC_LIGHTING",
+        "date":"06/01/2018 00:49:43",
+        "status":"UNSOLVED",
+        "imageUrls":["https://www.torchstar.us/media/wysiwyg/QQ_20170301135316.png","https://ichef-1.bbci.co.uk/news/660/media/images/76770000/jpg/_76770968_streetlights.jpg"],
+        "upVotes":"10",
+        "downVotes":"2",
+        "validations":"0",
+        "comments":[
+            {
+                "username":"Doru Vatavului",
+                "text": "I noticed it too. Someone should take care of it."
+            },
+            {
+                "username":"Dan Toderici",
+                "text": "I passed through there today. It's realy anoying."
+            }
+        ]
+    },
+    {
+        "id":"2",
+        "title":"Another Reflector Broken",
+        "description":"A reflector is broken on the street. The light keeps flickering on and off and it disturbs drivers.",
+        "latitude":"46.769342",
+        "longitude":"23.589673",
+        "address":"Old City Center",
+        "urgencyLevel":"MEDIUM",
+        "category":"PUBLIC_LIGHTING",
+        "date":"06/01/2018 00:49:43",
+        "status":"UNSOLVED",
+        "imageUrls":["https://www.torchstar.us/media/wysiwyg/QQ_20170301135316.png","https://ichef-1.bbci.co.uk/news/660/media/images/76770000/jpg/_76770968_streetlights.jpg"],
+        "upVotes":"10",
+        "downVotes":"2",
+        "validations":"0",
+        "comments":[
+            {
+                "username":"Doru Vatavului",
+                "text": "I noticed it too. Someone should take care of it."
+            },
+            {
+                "username":"Dan Toderici",
+                "text": "I passed through there today. It's realy anoying."
+            }
+        ]
+    } ]
