@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/clujsolver.css"/>
 </head>
-<jsp:include page="../../resources/components/navbar.jsp"/>
+<jsp:include page="../../resources/components/adminNavbar.jsp"/>
 
 <body class="blue-grey lighten-5">
 

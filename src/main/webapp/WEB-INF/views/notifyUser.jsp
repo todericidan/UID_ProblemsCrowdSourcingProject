@@ -15,7 +15,7 @@
 </head>
 
 
-<jsp:include page="../../resources/components/navbar.jsp"/>
+<jsp:include page="../../resources/components/adminNavbar.jsp"/>
 
 <body class="blue-grey lighten-5">
 
