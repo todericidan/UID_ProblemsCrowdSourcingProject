@@ -22,6 +22,9 @@ public class LoginController {
         if(email.equals("user") && password.equals("pass")){
             return "communityProblemsView";
         }
+        if(email.equals("admin") && password.equals("admin")){
+        	return "adminView";
+        }
         return "login";
     }
 }
