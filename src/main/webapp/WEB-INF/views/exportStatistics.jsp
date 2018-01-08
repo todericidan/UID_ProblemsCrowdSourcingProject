@@ -23,53 +23,62 @@
 <body class="blue-grey lighten-5">
 
 
+<div class="card container grey lighten-5">
+<h5 class="header">Requests</h5>
+    <div class="row">
+        <div class="card container grey lighten-5">
+
+            <span class="grey-text text-darken-1 lighten-3 col s2">Time</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">Institution</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">Description</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">Start Date</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">End Date</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card container grey lighten-5">
+            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24:20:10</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">Prefecture</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">Strada G. Baritiu nr. 24</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">
+                    <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
+                </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card container grey lighten-5">
+            <span class="grey-text text-darken-1 lighten-3 col s2">2015-21-24:20:10</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">Prefecture</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">Strada G. Baritiu nr. 24</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">
+                    <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
+                </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card container grey lighten-5">
+            <span class="grey-text text-darken-1 lighten-3 col s2">2015-21-24:20:10</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">Prefecture</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">Strada G. Baritiu nr. 24</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">
+                    <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
+                </span>
+        </div>
+    </div>
+
+</div>
 <div class="section white">
     <div class="row container">
-        <h5 class="header">Requests</h5>
-        <div class="row">
-            <div class="card container grey lighten-5">
-
-                <span class="grey-text text-darken-1 lighten-3 col s3">Time</span>
-                <span class="grey-text text-darken-1 lighten-3 col s3">Institution</span>
-                <span class="grey-text text-darken-1 lighten-3 col s3">Description</span>
-                <span class="grey-text text-darken-1 lighten-3 col s3"></span>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s3">2017-21-24:20:10</span>
-                <span class="grey-text text-darken-1 lighten-3 col s3">Prefecture</span>
-                <span class="grey-text text-darken-1 lighten-3 col s3">Strada G. Baritiu nr. 24</span>
-                <span class="grey-text text-darken-1 lighten-3 col s3">
-                    <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
-                </span>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s3">2015-21-24:20:10</span>
-                <span class="grey-text text-darken-1 lighten-3 col s3">Prefecture</span>
-                <span class="grey-text text-darken-1 lighten-3 col s3">Strada G. Baritiu nr. 24</span>
-                <span class="grey-text text-darken-1 lighten-3 col s3">
-                    <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
-                </span>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s3">2015-21-24:20:10</span>
-                <span class="grey-text text-darken-1 lighten-3 col s3">Prefecture</span>
-                <span class="grey-text text-darken-1 lighten-3 col s3">Strada G. Baritiu nr. 24</span>
-                <span class="grey-text text-darken-1 lighten-3 col s3">
-                    <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
-                </span>
-            </div>
-        </div>
-
-
     </div>
 </div>
 

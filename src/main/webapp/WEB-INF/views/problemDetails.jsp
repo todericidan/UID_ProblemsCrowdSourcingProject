@@ -25,26 +25,26 @@
 
 <body class="blue-grey lighten-5">
 
-
-<div class="section white">
-    <div class="row container">
-        <div class="row">
-            <div class="card container grey lighten-5">
-                <h5 class="header">Problem Title</h5>
-                <span class="grey-text text-darken-1 lighten-3 col s4">Full description</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">Type</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">Location</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">Start Date</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">
+<div class="card container grey lighten-5">
+    <div class="section white">
+        <div class="row container">
+            <div class="row">
+                <div class="card container grey lighten-5">
+                    <h5 class="header">Problem Title</h5>
+                    <span class="grey-text text-darken-1 lighten-3 col s4">Full description</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">Type</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">Location</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">Start Date</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">
                     <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
                 </span>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s4">Lose eyes get fat shew. Winter can indeed letter oppose way change tended now. So is improve my charmed picture exposed adapted demands.</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">
+            <div class="row">
+                <div class="card container grey lighten-5">
+                    <span class="grey-text text-darken-1 lighten-3 col s4">Lose eyes get fat shew. Winter can indeed letter oppose way change tended now. So is improve my charmed picture exposed adapted demands.</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">
                     <select class="filter-drop">
                                 <option value="" disabled selected>Type</option>
                                 <option value="1">Illegal Parking</option>
@@ -52,31 +52,31 @@
                                 <option value="3">Water networks</option>
                     </select>
                 </span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">
+                    <span class="grey-text text-darken-1 lighten-3 col s2">
                       <a href="${cityOverview}" class="brand-logo logo">
                           <img class="logo-img"
                                src="${pageContext.request.contextPath}/resources/img/singleProblem.PNG">
                       </a>
                 </span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">23.12.2015</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">23.12.2015</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s4"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">Status</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">str. Timisoara nr. 42</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">End Date</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+            <div class="row">
+                <div class="card container grey lighten-5">
+                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">Status</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">str. Timisoara nr. 42</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">End Date</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s4"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">
+            <div class="row">
+                <div class="card container grey lighten-5">
+                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">
                     <select class="filter-drop">
                                 <option value="" disabled selected>Status</option>
                                 <option value="1">Open</option>
@@ -84,79 +84,80 @@
                                 <option value="3">In Progress</option>
                     </select>
                 </span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">24.12.2015</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">24.12.2015</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s4"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">Urgency</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+            <div class="row">
+                <div class="card container grey lighten-5">
+                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">Urgency</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s4"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">High</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+            <div class="row">
+                <div class="card container grey lighten-5">
+                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">High</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="card container grey lighten-5">
+            <div class="row">
+                <div class="card container grey lighten-5">
                 <span class="grey-text text-darken-1 lighten-3 col s4">UpVote:
                     <a href="${cityOverview}">
                         <i class="small material-icons">thumb_up</i>
                     </a>
                 </span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="card container grey lighten-5">
+            <div class="row">
+                <div class="card container grey lighten-5">
                 <span class="grey-text text-darken-1 lighten-3 col s4">DownVote:
                     <a href="${cityOverview}">
                         <i class="small material-icons">thumb_down</i>
                     </a>
                 </span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s4">Amount of Votes: ${numberOfVotes}</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+            <div class="row">
+                <div class="card container grey lighten-5">
+                    <span class="grey-text text-darken-1 lighten-3 col s4">Amount of Votes: ${numberOfVotes}</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="card container grey lighten-5">
+            <div class="row">
+                <div class="card container grey lighten-5">
                 <span class="grey-text text-darken-1 lighten-3 col s4">Comment:
                     <i id="comment" class="small material-icons">comment</i>
                 </span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                </div>
             </div>
         </div>
     </div>
