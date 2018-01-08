@@ -10,6 +10,7 @@ import team6.uid.clujsolver.model.Category;
 import team6.uid.clujsolver.model.Popularity;
 import team6.uid.clujsolver.model.Status;
 import team6.uid.clujsolver.model.Urgency;
+import team6.uid.clujsorver.service.convertor.ProblemConvertor;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +20,7 @@ public class BrowsingProblemsController {
     @RequestMapping(value = "/problems",method = RequestMethod.GET)
     public String showCommunityProblems(HttpSession session){
 
+        session.setAttribute("problems",new ProblemConvertor().fromJsonToList("problems.json"));
         session.setAttribute("problemCategories", Category.values());
         session.setAttribute("popularityTypes", Popularity.values());
         session.setAttribute("statusTypes", Status.values());

@@ -14,7 +14,7 @@ import java.util.Scanner;
  * Created by todericidan on 1/8/2018.
  */
 public class ProblemConvertor {
-    List<CommunityProblem> fromJsonToList(String fileName){
+   public List<CommunityProblem> fromJsonToList(String fileName){
 
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource(fileName).getFile());
