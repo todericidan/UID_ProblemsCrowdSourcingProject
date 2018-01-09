@@ -101,13 +101,61 @@
 <input type="hidden" name="problemList" value="${problems}" />
 
 
+<div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content-restrained">
+
+
+        <div class="modal-content">
+            <div>
+                <img id="modal-image" class="img-pictogram" src="" alt="" />
+            </div>
+            <div>
+                <h4 id="modal-title"></h4>
+                <span>at </span><span id="modal-address"></span>
+                <span>on </span><span id="modal-date"></span>
+
+                <div>
+                    <span class="span-details"><span>Signaled under </span><span id="modal-category" class="span-category"></span></span>
+                    <span class="span-details"><span>Status: </span><span id="modal-status"></span></span>
+                    <span class="span-details"><span>Urgency: </span><span id="modal-urgency"></span></span>
+                </div>
+
+                <div>
+                    <p id="modal-description"></p>
+                </div>
+                <div>
+                    <span>Upvotes: </span><span class="span-details" id="modal-upvotes"></span>
+                    <span>Downvotes: </span><span id="modal-downvotes"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action waves-effect waves-green btn-flat"><i class="material-icons">thumb_up</i></a>
+            <a href="#!" class="modal-action waves-effect waves-red btn-flat"><i class="material-icons">thumb_down</i></a>
+            <a href="#!" class="modal-action waves-effect waves-green btn">MORE DETAILS</a>
+            <a href="#!" id="done-modal" class="modal-action modal-close waves-effect waves-green btn-flat">DONE</a>
+        </div>
+    </div>
+</div>
 
 <c:forEach items="${problems}" var="problem">
-    <input type="hidden" value='{"pb_title":"${problem.title}",
+    <input type="hidden" value='{"pb_id:":${problem.id},
+                                 "pb_title":"${problem.title}",
+                                 "pb_description":"${problem.description}",
+                                 "pb_address":"${problem.address}",
                                  "pb_status":"${problem.status}",
+                                 "pb_status_title":"${problem.status.title()}",
+                                 "pb_category_title":"${problem.category.title()}",
+                                 "pb_urgency_title":"${problem.urgencyLevel.title()}",
+                                 "pb_date":"${problem.date}",
+                                 "pb_image":"${problem.imageUrls.get(0)}",
                                  "pb_lat":${problem.latitude},
-                                 "pb_long":${problem.longitude}}'
+                                 "pb_long":${problem.longitude},
+                                 "pb_upvotes":${problem.upVotes},
+                                 "pb_downvotes":${problem.downVotes}}'
            class="js-problem">
+
 </c:forEach>
 
 
@@ -154,6 +202,19 @@
                 icon: icons[problem.pb_status],
                 map: map
             });
+            google.maps.event.addListener(marker, 'click', function() {
+                $("#modal-title").text(problem.pb_title);
+                $("#modal-address").text(problem.pb_address);
+                $("#modal-category").text(problem.pb_category_title);
+                $("#modal-date").text(problem.pb_date);
+                $("#modal-description").text(problem.pb_description);
+                $("#modal-status").text(problem.pb_status_title);
+                $("#modal-urgency").text(problem.pb_urgency_title);
+                $("#modal-image").attr("src",problem.pb_image);
+                $("#modal-upvotes").text(problem.pb_upvotes);
+                $("#modal-downvotes").text(problem.pb_downvotes);
+                $('#modal1').modal('open');
+            });
         });
     }
 </script>
@@ -168,7 +229,12 @@
             selectYears: 15 // Creates a dropdown of 15 years to control year
         });
 
+        $('.modal').modal();
+
     });
+
+
+
 </script>
 
 

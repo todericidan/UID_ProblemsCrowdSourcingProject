@@ -124,3 +124,30 @@
     text-align: center;
 
 }
+
+
+.problem-urgency {
+    margin-left: 22px;
+}
+
+.span-details {
+    margin-right: 10px;
+}
+
+.span-category {
+    color: #00838f;
+    font-style: bold;
+}
+
+.img-pictogram {
+    float: left;
+    border-radius: 5%;
+    max-height: 170px;
+    overflow: hidden;
+    margin-right: 30px;
+}
+
+.modal-content-restrained {
+    width: 85%;
+    margin: auto;
+}
