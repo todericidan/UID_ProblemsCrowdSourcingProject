@@ -97,18 +97,74 @@
     </div>
 </div>
 
+
+<input type="hidden" name="problemList" value="${problems}" />
+
+
+
+<c:forEach items="${problems}" var="problem">
+    <input type="hidden" value='{"pb_title":"${problem.title}",
+                                 "pb_status":"${problem.status}",
+                                 "pb_lat":${problem.latitude},
+                                 "pb_long":${problem.longitude}}'
+           class="js-problem">
+</c:forEach>
+
+
 </body>
+
+<script language="JavaScript">
+
+    var problems = [];
+
+    $('.js-problem').each(function() {
+        problems.push(jQuery.parseJSON($(this).val()));
+    });
+
+    alert(problems[0].pb_status);
+</script>
 
 <script>
     var map;
+    var problems = [];
+
+    $('.js-problem').each(function() {
+        problems.push(jQuery.parseJSON($(this).val()));
+    });
 
     function initMap() {
+
         map = new google.maps.Map(document.getElementById('map'), {
             center: {
-                lat: 46.769342,
-                lng: 23.589673
+                lat: 46.771081,
+                lng: 23.591437
             },
             zoom: 14
+        });
+
+        var icons = {
+            UNSOLVED: {
+                url: 'http://torens-auto.com/local/templates/torens/img/map-marker-icon2.png',
+                scaledSize: new google.maps.Size(35, 35)
+            },
+            SOLVED: {
+                url: 'https://www.maminou.com/resources/img/map-marker-default.png',
+                scaledSize: new google.maps.Size(35, 35)
+            },
+            NOW_SOLVING: {
+                url: 'http://eskaykids.com.au/wp-content/uploads/2017/08/location-icon.png',
+                scaledSize: new google.maps.Size(35, 35)
+            }
+        };
+
+
+        // Create markers.
+        problems.forEach(function(problem) {
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(problem.pb_lat, problem.pb_long),
+                icon: icons[problem.pb_status],
+                map: map
+            });
         });
     }
 </script>
