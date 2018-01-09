@@ -113,17 +113,6 @@
 
 </body>
 
-<script language="JavaScript">
-
-    var problems = [];
-
-    $('.js-problem').each(function() {
-        problems.push(jQuery.parseJSON($(this).val()));
-    });
-
-    alert(problems[0].pb_status);
-</script>
-
 <script>
     var map;
     var problems = [];
