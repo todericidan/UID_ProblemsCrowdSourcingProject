@@ -176,3 +176,46 @@
 .search-result{
     margin-left:18px;
 }
+
+.profile-header{
+    position: relative;
+}
+
+.profile-header-section{
+    width: 33%;
+    float:left;
+}
+.profile-picture{
+    margin-top: 30px;
+    width: 350px !important;
+    height: 350px !important;
+    margin-left: 30px;
+}
+
+.to-do-arrow{
+    margin: 15px;
+    margin-right: 25px;
+}
+.profile-text{
+    margin-top: 120px;
+}
+.bar{
+    border-bottom: 1pt;
+    border-bottom-color: gray;
+}
+.contributions{
+    width: 86%;
+    margin: auto;
+}
+
+.tabs .tab a {
+    color: #00838f !important;
+}
+
+.tabs .indicator {
+    background-color: #00838f ;
+}
+
+.listing-arrow{
+    margin-right: 20px;
+}

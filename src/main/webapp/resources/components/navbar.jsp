@@ -8,6 +8,7 @@
 <c:url var="solversChart" value="/chartSolvers"/>
 <c:url var="notifiersChart" value="/chartNotifiers"/>
 <c:url var="search" value="/searchResults"/>
+<c:url var="userProfile" value="/myProfile"/>
 
 <style type="text/css">
 
@@ -38,8 +39,8 @@
                 <li><a class="dropdown-button" href="#!" data-activates="statistics-dropdown">Statistics</a></li>
                 <li><a>Help</a></li>
                 <li><a>Contact</a></li>
-                <li><a>Jane Doe</a></li>
-                <img class="user-img" src="https://cdn3.iconfinder.com/data/icons/business-round-flat-vol-1-1/36/user_account_profile_avatar_person_student_female-512.png"></img>
+                <li><a href="${userProfile}">Jane Doe</a></li>
+                <img href="${userProfile}" class="user-img" src="https://cdn3.iconfinder.com/data/icons/business-round-flat-vol-1-1/36/user_account_profile_avatar_person_student_female-512.png"/>
             </ul>
         </div>
     </div>
