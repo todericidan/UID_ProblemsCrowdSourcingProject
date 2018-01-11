@@ -16,7 +16,7 @@ public class CommunityProblem {
     private Urgency urgencyLevel;
     private Category category;
     private String date;
-    private Date submissionDate;
+    private String solvingDate;
     private Status status;
     private List<String> imageUrls;
     private int upVotes;
@@ -96,12 +96,12 @@ public class CommunityProblem {
         this.category = category;
     }
 
-    public Date getSubmissionDate() {
-        return submissionDate;
+    public String getSolvingDate() {
+        return solvingDate;
     }
 
-    public void setSubmissionDate(Date submissionDate) {
-        this.submissionDate = submissionDate;
+    public void setSolvingDate(String solvingDate) {
+        this.solvingDate = solvingDate;
     }
 
     public Status getStatus() {
@@ -164,7 +164,7 @@ public class CommunityProblem {
         sb.append(", urgencyLevel=").append(urgencyLevel);
         sb.append(", category=").append(category);
         sb.append(", date='").append(date).append('\'');
-        sb.append(", submissionDate=").append(submissionDate);
+        sb.append(", solvingDate=").append(solvingDate);
         sb.append(", status=").append(status);
         sb.append(", imageUrls=").append(imageUrls);
         sb.append(", upVotes=").append(upVotes);

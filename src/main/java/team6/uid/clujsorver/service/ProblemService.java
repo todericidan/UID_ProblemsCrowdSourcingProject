@@ -146,6 +146,52 @@ public class ProblemService {
         return list;
     }
 
+    public CommunityProblem getProblemById(String id){
+        List<CommunityProblem> problems = getProblems();
+        for(CommunityProblem problem :problems){
+            if(problem.getId().equals(id)){
+                return problem;
+            }
+        }
+        return null;
+    }
+
+    public void upVoteProblem(String id){
+        CommunityProblem problem = getProblemById(id);
+        problem.setUpVotes(problem.getUpVotes() + 1);
+        removeProblem(id);
+        addProblem(problem);
+    }
+
+    public void downVoteProblem(String id){
+        CommunityProblem problem = getProblemById(id);
+        problem.setDownVotes(problem.getDownVotes() + 1);
+        removeProblem(id);
+        addProblem(problem);
+    }
+
+    public void addValidation(String id){
+        CommunityProblem problem = getProblemById(id);
+        problem.setValidations(problem.getValidations() + 1);
+        removeProblem(id);
+        addProblem(problem);
+    }
+
+    public void changeStatus(String id, Status status){
+        CommunityProblem problem = getProblemById(id);
+        problem.setStatus(status);
+        removeProblem(id);
+        addProblem(problem);
+    }
+
+    public void changeCategory(String id, Category category){
+        CommunityProblem problem = getProblemById(id);
+        problem.setCategory(category);
+        removeProblem(id);
+        addProblem(problem);
+    }
+
+
     public List<CommunityProblem> getProblems() {
         return problems;
     }

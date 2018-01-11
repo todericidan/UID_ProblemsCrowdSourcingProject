@@ -30,26 +30,28 @@
         <div class="row container">
             <div class="row">
                 <div class="card container grey lighten-5">
-                    <h5 class="header">Problem Title</h5>
+                    <h5 class="header">${problem.title}</h5>
                     <span class="grey-text text-darken-1 lighten-3 col s4">Full description</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2">Type</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2">Location</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2">Start Date</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2">
-                    <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
-                </span>
+                     <a href="/validate/${problem.id}">
+                        <button class="waves-effect waves-light btn-large amber darken-4">Validate</button>
+                     </a>
+                    </span>
                 </div>
             </div>
 
             <div class="row">
                 <div class="card container grey lighten-5">
-                    <span class="grey-text text-darken-1 lighten-3 col s4">Lose eyes get fat shew. Winter can indeed letter oppose way change tended now. So is improve my charmed picture exposed adapted demands.</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s4">${problem.description}</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2">
                     <select class="filter-drop">
-                                <option value="" disabled selected>Type</option>
-                                <option value="1">Illegal Parking</option>
-                                <option value="2">Disturbing Public Order</option>
-                                <option value="3">Water networks</option>
+                        <option value="" disabled selected>${problem.category.title()}</option>
+                        <c:forEach items="${problemCategories}" var="category">
+                            <option value="${category}">${category.title()}</option>
+                        </c:forEach>
                     </select>
                 </span>
                     <span class="grey-text text-darken-1 lighten-3 col s2">
@@ -58,7 +60,7 @@
                                src="${pageContext.request.contextPath}/resources/img/singleProblem.PNG">
                       </a>
                 </span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">23.12.2015</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">${problem.solvingDate}</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                 </div>
             </div>
@@ -67,7 +69,7 @@
                 <div class="card container grey lighten-5">
                     <span class="grey-text text-darken-1 lighten-3 col s4"></span>
                     <span class="grey-text text-darken-1 lighten-3 col s2">Status</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">str. Timisoara nr. 42</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">${problem.address}</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2">End Date</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                 </div>
@@ -78,14 +80,14 @@
                     <span class="grey-text text-darken-1 lighten-3 col s4"></span>
                     <span class="grey-text text-darken-1 lighten-3 col s2">
                     <select class="filter-drop">
-                                <option value="" disabled selected>Status</option>
-                                <option value="1">Open</option>
-                                <option value="2">Solved</option>
-                                <option value="3">In Progress</option>
+                        <option value="" disabled selected>${problem.status.title()}</option>
+                        <c:forEach items="${statusTypes}" var="status">
+                            <option value="${status}">${status.title()}</option>
+                        </c:forEach>
                     </select>
                 </span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">24.12.2015</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">${problem.date}</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                 </div>
             </div>
@@ -103,7 +105,7 @@
             <div class="row">
                 <div class="card container grey lighten-5">
                     <span class="grey-text text-darken-1 lighten-3 col s4"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">High</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s2">${problem.urgencyLevel.title()}</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
@@ -113,7 +115,7 @@
             <div class="row">
                 <div class="card container grey lighten-5">
                 <span class="grey-text text-darken-1 lighten-3 col s4">UpVote:
-                    <a href="${cityOverview}">
+                    <a href="/upVote/${problem.id}">
                         <i class="small material-icons">thumb_up</i>
                     </a>
                 </span>
@@ -127,7 +129,7 @@
             <div class="row">
                 <div class="card container grey lighten-5">
                 <span class="grey-text text-darken-1 lighten-3 col s4">DownVote:
-                    <a href="${cityOverview}">
+                    <a href="/downVote/${problem.id}">
                         <i class="small material-icons">thumb_down</i>
                     </a>
                 </span>
@@ -140,7 +142,7 @@
 
             <div class="row">
                 <div class="card container grey lighten-5">
-                    <span class="grey-text text-darken-1 lighten-3 col s4">Amount of Votes: ${numberOfVotes}</span>
+                    <span class="grey-text text-darken-1 lighten-3 col s4">Amount of Votes: ${problem.upVotes} ${problem.downVotes}</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
