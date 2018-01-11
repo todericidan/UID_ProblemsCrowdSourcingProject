@@ -32,7 +32,7 @@
                     </form>
                 </li>
 
-                <li class="active"><a href="${cityOverview}">Home</a></li>
+                <li><a href="${cityOverview}">Home</a></li>
                 <li><a href="${badBehavior}">Bad behavior reports</a></li>
                 <li><a href="${recurrent}">Handle recurrent problems</a></li>
                 <li><a href="${exportData}">Export data</a></li>

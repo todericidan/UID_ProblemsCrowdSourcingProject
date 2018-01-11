@@ -7,6 +7,7 @@
 <c:url var="problemStats" value="/problemStats"/>
 <c:url var="solversChart" value="/chartSolvers"/>
 <c:url var="notifiersChart" value="/chartNotifiers"/>
+<c:url var="search" value="/searchResults"/>
 
 <style type="text/css">
 
@@ -32,7 +33,7 @@
                     </form>
                 </li>
 
-                <li class="active"><a href="${cityOverview}">City Overview</a></li>
+                <li><a href="${cityOverview}">City Overview</a></li>
                 <!-- Dropdown Trigger -->
                 <li><a class="dropdown-button" href="#!" data-activates="statistics-dropdown">Statistics</a></li>
                 <li><a>Help</a></li>

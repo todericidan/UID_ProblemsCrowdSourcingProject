@@ -151,3 +151,28 @@
     width: 85%;
     margin: auto;
 }
+
+
+.search-details{
+    margin-right: 40px;
+    margin-top:10px;
+}
+
+.avatar-search{
+    margin-left:40px;
+}
+
+.collection .collection-item.avatar:not(.circle-clipper)>.circle, .collection .collection-item.avatar :not(.circle-clipper)>.circle {
+    position: absolute;
+    width: 59px !important;
+    height: 59px !important;
+    overflow: hidden;
+    left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+.search-result{
+    margin-left:18px;
+}

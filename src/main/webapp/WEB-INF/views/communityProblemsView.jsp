@@ -90,7 +90,7 @@
 
         </ul>
 
-        <div id="map" style="height:450px">
+        <div id="map" style="height:550px">
 
         </div>
 
