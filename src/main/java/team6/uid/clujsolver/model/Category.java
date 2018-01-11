@@ -22,7 +22,9 @@ public enum Category implements Serializable {
     PUBLIC_PEACE("Disturbance of public peace"),
     WATER("Water/Sewerage networks"),
     PUBLIC_TRANSPORT("Public transport"),
-    OTHERS("Others");
+    OTHERS("Others"),
+    ANY("Any");
+
 
     private String title;
 

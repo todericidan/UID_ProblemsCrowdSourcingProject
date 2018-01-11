@@ -8,7 +8,8 @@ import java.io.Serializable;
 public enum Urgency implements Serializable {
     HIGH("High"),
     MEDIUM("Medium"),
-    LOW("Low");
+    LOW("Low"),
+    ANY("Any");
 
     private String title;
 

@@ -8,7 +8,8 @@ import java.io.Serializable;
 public enum Status implements Serializable{
     UNSOLVED("Unsolved"),
     NOW_SOLVING("Currently solving"),
-    SOLVED("Solved");
+    SOLVED("Solved"),
+    ANY("Any");
 
     private String title;
 

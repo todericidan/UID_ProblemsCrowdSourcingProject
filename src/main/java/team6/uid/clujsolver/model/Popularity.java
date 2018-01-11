@@ -8,7 +8,8 @@ import java.io.Serializable;
 public enum Popularity implements Serializable {
     POPULAR("Popular"),
     AVERAGE("Average"),
-    UNPOPULAR("Unpopular");
+    UNPOPULAR("Unpopular"),
+    ANY("Any");
 
     private String title;
 

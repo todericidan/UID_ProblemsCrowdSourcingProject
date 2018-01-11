@@ -172,6 +172,7 @@ public class CommunityProblem {
         sb.append(", validations=").append(validations);
         sb.append(", comments=").append(comments);
         sb.append('}');
+        sb.append('\n');
         return sb.toString();
     }
 }

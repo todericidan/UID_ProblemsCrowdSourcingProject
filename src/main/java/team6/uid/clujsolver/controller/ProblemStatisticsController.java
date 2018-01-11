@@ -13,10 +13,6 @@ public class ProblemStatisticsController {
 
     @RequestMapping(value = "/problemStats",method = RequestMethod.GET)
     public String showProblemStats(Model model){
-
-        String message = "sadssa";
-        model.addAttribute("message",message);
-
         return "problemStats";
     }
 
