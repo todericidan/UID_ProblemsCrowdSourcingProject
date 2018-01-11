@@ -27,7 +27,6 @@
 <h5 class="header">Requests</h5>
     <div class="row">
         <div class="card container grey lighten-5">
-
             <span class="grey-text text-darken-1 lighten-3 col s2">Time</span>
             <span class="grey-text text-darken-1 lighten-3 col s2">Institution</span>
             <span class="grey-text text-darken-1 lighten-3 col s2">Description</span>
@@ -37,44 +36,20 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="card container grey lighten-5">
-            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24:20:10</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">Prefecture</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">Strada G. Baritiu nr. 24</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">
+    <c:forEach items="${requests}" var="request">
+        <div class="row">
+            <div class="card container grey lighten-5">
+                <span class="grey-text text-darken-1 lighten-3 col s2">${request.requestIssueDate}</span>
+                <span class="grey-text text-darken-1 lighten-3 col s2">${request.institution}</span>
+                <span class="grey-text text-darken-1 lighten-3 col s2">${request.description}</span>
+                <span class="grey-text text-darken-1 lighten-3 col s2">${request.startDate}</span>
+                <span class="grey-text text-darken-1 lighten-3 col s2">${request.endDate}</span>
+                <span class="grey-text text-darken-1 lighten-3 col s2">
                     <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
                 </span>
+            </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="card container grey lighten-5">
-            <span class="grey-text text-darken-1 lighten-3 col s2">2015-21-24:20:10</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">Prefecture</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">Strada G. Baritiu nr. 24</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">
-                    <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
-                </span>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="card container grey lighten-5">
-            <span class="grey-text text-darken-1 lighten-3 col s2">2015-21-24:20:10</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">Prefecture</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">Strada G. Baritiu nr. 24</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">2017-21-24</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">
-                    <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
-                </span>
-        </div>
-    </div>
+    </c:forEach>
 
 </div>
 <div class="section white">
