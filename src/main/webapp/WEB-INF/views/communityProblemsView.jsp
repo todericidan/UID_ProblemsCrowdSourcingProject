@@ -134,14 +134,14 @@
         <div class="modal-footer">
             <a href="#!" class="modal-action waves-effect waves-green btn-flat"><i class="material-icons">thumb_up</i></a>
             <a href="#!" class="modal-action waves-effect waves-red btn-flat"><i class="material-icons">thumb_down</i></a>
-            <a href="#!" class="modal-action waves-effect waves-green btn">MORE DETAILS</a>
+            <a id="problemDetailsPage" href="" class="modal-action waves-effect waves-green btn">MORE DETAILS</a>
             <a href="#!" id="done-modal" class="modal-action modal-close waves-effect waves-green btn-flat">DONE</a>
         </div>
     </div>
 </div>
 
 <c:forEach items="${problems}" var="problem">
-    <input type="hidden" value='{"pb_id:":${problem.id},
+    <input type="hidden" value='{"pb_id":${problem.id},
                                  "pb_title":"${problem.title}",
                                  "pb_description":"${problem.description}",
                                  "pb_address":"${problem.address}",
@@ -207,6 +207,7 @@
             }
         };
 
+        var ctx = "${pageContext.request.contextPath}";
 
         // Create markers.
         problems.forEach(function(problem) {
@@ -224,6 +225,7 @@
                 $("#modal-status").text(problem.pb_status_title);
                 $("#modal-urgency").text(problem.pb_urgency_title);
                 $("#modal-image").attr("src",problem.pb_image);
+                $("#problemDetailsPage").attr("href",ctx + "/problemDetails/" + problem.pb_id);
                 $("#modal-upvotes").text(problem.pb_upvotes);
                 $("#modal-downvotes").text(problem.pb_downvotes);
                 $('#modal1').modal('open');
