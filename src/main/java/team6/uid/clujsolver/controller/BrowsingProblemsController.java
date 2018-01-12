@@ -12,6 +12,7 @@ import team6.uid.clujsolver.model.Status;
 import team6.uid.clujsolver.model.Urgency;
 import team6.uid.clujsorver.service.convertor.ProblemConvertor;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -19,6 +20,13 @@ public class BrowsingProblemsController {
 
     @RequestMapping(value = "/problems",method = RequestMethod.GET)
     public String showCommunityProblems(HttpSession session){
+
+
+        if(session.getAttribute("firstUse") != null){
+            session.setAttribute("firstUse",false);
+        } else {
+            session.setAttribute("firstUse",true);
+        }
 
         session.setAttribute("problems",new ProblemConvertor().fromJsonToList("problems.json"));
         session.setAttribute("problemCategories", Category.values());

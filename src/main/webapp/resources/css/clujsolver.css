@@ -152,6 +152,10 @@
     margin: auto;
 }
 
+.tap-target {
+    background-color: #ffb300 !important;
+}
+
 
 .search-details{
     margin-right: 40px;

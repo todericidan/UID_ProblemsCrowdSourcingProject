@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <html>
+<c:url var="newProblem" value="/newProblem"/>
 
 <head>
     <title>City Overview</title>
@@ -26,7 +27,7 @@
 
         <ul class="collapsible" data-collapsible="accordion">
             <li>
-                <div class="collapsible-header "><i class="material-icons">filter_list</i>Filters</div>
+                <div class="collapsible-header "><i id="filters" class="material-icons">filter_list</i>Filters</div>
                 <div class="collapsible-body ">
                     <div class="row">
                         <div class="input-field col s4">
@@ -158,7 +159,15 @@
 
 </c:forEach>
 
+<div class="tap-target" data-activates="filters">
+    <div class="tap-target-content">
+        <h5>Filter the problems</h5>
+        <p>Click here to toggle the filters menu.</p>
+        <p>This allows you to restrict the problems you see on the map.</p>
+    </div>
+</div>
 
+<input type="hidden" value="${firstUse}" id="firstUse"/>
 </body>
 
 <script>
@@ -191,6 +200,10 @@
             NOW_SOLVING: {
                 url: 'http://eskaykids.com.au/wp-content/uploads/2017/08/location-icon.png',
                 scaledSize: new google.maps.Size(35, 35)
+            },
+            CURRENT_LOCATION: {
+                url: 'https://hitchplanet.s3.amazonaws.com/static/pop/webui/common/images/icon-location-l-h.cd20fd65cade.png',
+                scaledSize: new google.maps.Size(25, 25)
             }
         };
 
@@ -228,10 +241,19 @@
                     lng: position.coords.longitude
                 };
 
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('You are here. Click to signal a problem.');
+                infoWindow.setPosition(new google.maps.LatLng(pos.lat + 0.0015, pos.lng));
+                infoWindow.setContent('You are here. ' +
+                    '<a href=${newProblem}>Click to signal a problem.</a>');
                 infoWindow.open(map);
                 map.setCenter(pos);
+
+
+                //create current location marker
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    icon: icons["CURRENT_LOCATION"],
+                    map: map
+                });
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
             });
@@ -240,6 +262,18 @@
             handleLocationError(false, infoWindow, map.getCenter());
         }
 
+        //show an infowindow to instruct the user to check problem details
+        guideWindow = new google.maps.InfoWindow;
+        var guideWindowPos = {
+
+            //46.771738, 23.578130
+
+            lat: problems[0].pb_lat + 0.002244,
+            lng: problems[0].pb_long
+        };
+        guideWindow.setPosition(guideWindowPos);
+        guideWindow.setContent('Click on a problem to check its details.');
+        guideWindow.open(map);
 
     }
 
@@ -267,14 +301,15 @@
 
         $('.modal').modal();
 
+        if($('#firstUse').val() == "true"){
+            $('.tap-target').tapTarget('open');
+        }
+       // $('.tap-target').tapTarget('close');
     });
 
 
 
 </script>
-
-
-</body>
 
 
 

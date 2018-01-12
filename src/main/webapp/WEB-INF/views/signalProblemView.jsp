@@ -124,6 +124,8 @@
     </div>
 </div>
 
+
+
 <script>
     var map;
 
@@ -147,10 +149,23 @@
                     lng: position.coords.longitude
                 };
 
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('You are here. Click to signal a problem in your current location.');
+                infoWindow.setPosition(new google.maps.LatLng(pos.lat + 0.0015, pos.lng));
+                infoWindow.setContent('You are here. ' +
+                    '<a>Click here to signal a problem in your current location</a>' +
+                    '<br>' +
+                    'or click anywhere on the map to signal a problem there.');
                 infoWindow.open(map);
                 map.setCenter(pos);
+
+                //create current location marker
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    icon: {
+                        url: 'https://hitchplanet.s3.amazonaws.com/static/pop/webui/common/images/icon-location-l-h.cd20fd65cade.png',
+                        scaledSize: new google.maps.Size(25, 25)
+                        },
+                    map: map
+                });
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
             });

@@ -26,7 +26,7 @@
 
             <div class="profile-header-section profile-text">
                 <h3>Jane Doe</h3>
-                <h6>Prolbem Solver of the Month  <i class="material-icons">verified_user</i></h6>
+                <h6>Problem Solver of the Month  <i class="material-icons">verified_user</i></h6>
             </div>
 
             <div class="profile-header-section">
