@@ -223,3 +223,16 @@
 .listing-arrow{
     margin-right: 20px;
 }
+
+.info-markers{
+    margin: auto;
+    width: 540px;
+}
+
+.map-signal-problem{
+    padding: 0 !important;
+}
+
+.address-signal-problem{
+    margin-left: 35px !important;
+}

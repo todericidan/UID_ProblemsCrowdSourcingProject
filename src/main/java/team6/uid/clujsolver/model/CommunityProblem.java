@@ -1,6 +1,6 @@
 package team6.uid.clujsolver.model;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,10 +19,10 @@ public class CommunityProblem {
     private String solvingDate;
     private Status status;
     private List<String> imageUrls;
-    private int upVotes;
-    private int downVotes;
-    private int validations;
-    private List<Comment> comments;
+    private int upVotes = 0;
+    private int downVotes = 0;
+    private int validations = 0;
+    private List<Comment> comments = new ArrayList<>();
 
     public String getId() {
         return id;

@@ -31,7 +31,7 @@
                 <div class="collapsible-body ">
                     <div class="row">
                         <div class="input-field col s4">
-                            <select class="filter-drop" multiple>
+                            <select  class="filter-drop" multiple>
                                 <option value="" disabled selected>Category</option>
                                 <c:forEach items="${problemCategories}" var="category">
                                     <option value="${category}">${category.title()}</option>
@@ -91,10 +91,27 @@
 
         </ul>
 
-        <div id="map" style="height:550px">
+        <div id="map" style="height:520px">
 
         </div>
 
+    </div>
+</div>
+
+<div class="row">
+    <div class="info-markers">
+    <div class="chip">
+        <img src="http://torens-auto.com/local/templates/torens/img/map-marker-icon2.png" alt="Unsolved Problems">
+        Unsolved Problems
+    </div>
+    <div class="chip">
+        <img src="http://eskaykids.com.au/wp-content/uploads/2017/08/location-icon.png" alt="Problems Getting Solved">
+        Problems Getting Solved
+    </div>
+    <div class="chip">
+        <img src="https://www.adswerve.com/wp-content/uploads/2017/09/map-marker-icon.png" alt="Solved Problems">
+        Solved Problems
+    </div>
     </div>
 </div>
 
@@ -194,7 +211,7 @@
                 scaledSize: new google.maps.Size(35, 35)
             },
             SOLVED: {
-                url: 'https://www.maminou.com/resources/img/map-marker-default.png',
+                url: 'https://www.adswerve.com/wp-content/uploads/2017/09/map-marker-icon.png',
                 scaledSize: new google.maps.Size(35, 35)
             },
             NOW_SOLVING: {

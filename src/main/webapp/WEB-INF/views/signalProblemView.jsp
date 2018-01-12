@@ -18,18 +18,45 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/clujsolver.css" />
 </head>
 <jsp:include page="../../resources/components/navbar.jsp"/>
+<c:url var="addProblem" value="/addProblem"/>
+<c:url var="cityOverview" value="/problems"/>
+
 
 <body class="blue-grey lighten-5">
+
+<form action="${addProblem}" method="POST">
 <div class="row">
     <div class="card container grey lighten-5">
 
         <div class="card-content card-top-title">
             <span class="card-title  activator grey-text text-darken-4">Choose the location</span>
         </div>
-
-        <div class="card-image waves-effect waves-block waves-light">
-            <div id="map" style="height:450px"></div>
+        <div class="card-tabs">
+            <ul class="tabs tabs-fixed-width">
+                <li class="tab"><a class="active" href="#mapAddress">Choose a place on the map </a></li>
+                <li class="tab"><a href="#typeAddress">Or type the address</a></li>
+            </ul>
         </div>
+
+
+        <div class="card-content grey lighten-4 map-signal-problem">
+            <div id="mapAddress">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <div id="map" style="height:450px"></div>
+                </div>
+            </div>
+            <div id="typeAddress">
+                <div class="row">
+                    <div class="input-field col s3 problem-title address-signal-problem">
+                        <input name="street" id="street" type="text" class="validate">
+                        <label for="street">Street</label>
+                    </div>
+                    <div class="input-field col s3 problem-title">
+                        <input id="number" type="text" class="validate">
+                        <label for="number">Number</label>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
 
@@ -42,14 +69,14 @@
 
         <div class="row">
             <div class="input-field col s3 problem-title">
-                <input id="title" type="text" class="validate">
+                <input name="title" id="title" type="text" class="validate">
                 <label for="title">Title</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s4">
-                <select class="filter-drop">
+                <select name="category" class="filter-drop">
                     <option value="" disabled selected>Category</option>
                     <c:forEach items="${problemCategories}" var="category">
                         <option value="${category}">${category.title()}</option>
@@ -62,7 +89,7 @@
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="description" class="materialize-textarea"></textarea>
+                        <textarea name="description" id="description" class="materialize-textarea"></textarea>
                         <label for="description">Description</label>
                     </div>
                 </div>
@@ -86,16 +113,16 @@
         <div class="row problem-urgency">
             <span>Urgency level</span>
             <p>
-                <input name="urgency" type="radio" id="high" />
+                <input name="urgency" type="radio" id="high" value="HIGH"/>
                 <label for="high">Needs to be addressed immediately</label>
             </p>
             <p>
-                <input name="urgency" type="radio" id="medium" />
+                <input name="urgency" type="radio" id="medium" value="MEDIUM" />
                 <label for=medium>Should be taken care of soon</label>
             </p>
 
             <p>
-                <input name="urgency" type="radio" id="low" />
+                <input name="urgency" type="radio" id="low" value="LOW"/>
                 <label for=low>It can wait</label>
             </p>
         </div>
@@ -105,26 +132,28 @@
                 <label for="terms">I agree with the terms and conditions</label>
             </p>
         </div>
-
+        <input id="latitude" type="hidden" name="latitude" value="">
+        <input id="longitude" type="hidden" name="longitude" value="">
         <div class="row">
             <div class="col">
                 <button type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4">Signal problem</button>
             </div>
 
-
             <div class="col">
-                <button type="submit" name="action" class="waves-effect waves-light btn btn-right cyan darken-3">Save draft</button>
+                <a id="saveAsDraft" class="waves-effect waves-light btn btn-right cyan darken-3">Save draft</a>
             </div>
 
             <div class="col">
-                <button type="submit" name="action" class="waves-effect waves-light btn btn-right grey lighten-3 btn-faded">Cancel</button>
+                <a href="${cityOverview}"  class="waves-effect waves-light btn btn-right grey lighten-3 btn-faded">Cancel</a>
             </div>
         </div>
 
     </div>
 </div>
+</div>
 
-
+</form>
+</body>
 
 <script>
     var map;
@@ -151,21 +180,36 @@
 
                 infoWindow.setPosition(new google.maps.LatLng(pos.lat + 0.0015, pos.lng));
                 infoWindow.setContent('You are here. ' +
-                    '<a>Click here to signal a problem in your current location</a>' +
+                    'Leave the dot here to signal a problem in your current location' +
                     '<br>' +
-                    'or click anywhere on the map to signal a problem there.');
+                    'or move the dot anywhere on the map to signal a problem there.');
                 infoWindow.open(map);
                 map.setCenter(pos);
 
                 //create current location marker
-                var marker = new google.maps.Marker({
+                var currentLocation = new google.maps.Marker({
                     position: pos,
                     icon: {
                         url: 'https://hitchplanet.s3.amazonaws.com/static/pop/webui/common/images/icon-location-l-h.cd20fd65cade.png',
                         scaledSize: new google.maps.Size(25, 25)
-                        },
+                    },
+                    draggable: true,
                     map: map
                 });
+                $("#latitude").attr("value",currentLocation.getPosition().lat());
+                $("#longitude").attr("value",currentLocation.getPosition().lng());
+
+                google.maps.event.addListener(currentLocation, 'dragend', function(ev){
+                    infoWindow.close();
+                    infoWindow.setPosition(new google.maps.LatLng(currentLocation.getPosition().lat() + 0.0015, currentLocation.getPosition().lng()));
+                    $("#latitude").attr("value",currentLocation.getPosition().lat());
+                    $("#longitude").attr("value",currentLocation.getPosition().lng());
+
+                    infoWindow.setContent("Done! You will now signal a problem at this location.");
+                    infoWindow.open(map);
+                });
+
+
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
             });
@@ -184,19 +228,20 @@
             'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
     }
+
+
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcGHmxVqhxqsG7U6n67QWjFreZ_YOxEEE&callback=initMap" async defer></script>
 
 <script language="Javascript">
     $(document).ready(function() {
         $('select').material_select();
-
+        $('#saveAsDraft').click( function(){
+            Materialize.toast('Problem saved as draft', 4000)
+        });
     });
 </script>
-
-</body>
-
-
 
 
 </html>
