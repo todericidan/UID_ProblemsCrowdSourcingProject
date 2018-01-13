@@ -22,29 +22,11 @@ public class ProblemDetailsController {
 
     ProblemService problemService = ProblemService.getInstance();
 
-    @RequestMapping(value = "/problemDetails",method = RequestMethod.GET)
-    public String showLoginPage(HttpSession session, Model model){
+    @RequestMapping(value = "/problemDetails/${problemId}",method = RequestMethod.GET)
+    public String showLoginPage(@PathVariable("problemId") String id, HttpSession session, Model model){
         session.setAttribute("problemCategories", Category.values());
 
-        List<String> images = new ArrayList<String>();
-        images.add("img/singleProblem.PNG");
-        CommunityProblem communityProblem = new CommunityProblem();
-        communityProblem.setId("1");
-        communityProblem.setAddress("Str Louis Pasteur nr.23");
-        communityProblem.setCategory(Category.GREEN_SPACES);
-        communityProblem.setComments(null);
-        communityProblem.setDate("12-25-2017");
-        communityProblem.setDescription("descr");
-        communityProblem.setDownVotes(5);
-        communityProblem.setUpVotes(2);
-        communityProblem.setLongitude(24.34);
-        communityProblem.setLatitude(24.55);
-        communityProblem.setStatus(Status.NOW_SOLVING);
-        communityProblem.setSolvingDate("11-12-2017");
-        communityProblem.setTitle("Parked laican S hole");
-        communityProblem.setUrgencyLevel(Urgency.HIGH);
-        communityProblem.setValidations(12);
-        communityProblem.setImageUrls(images);
+        CommunityProblem communityProblem = problemService.getProblemById(id);
 
         model.addAttribute("problem",communityProblem);
 
