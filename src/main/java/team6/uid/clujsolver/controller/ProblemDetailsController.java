@@ -22,7 +22,7 @@ public class ProblemDetailsController {
 
     ProblemService problemService = ProblemService.getInstance();
 
-    @RequestMapping(value = "/problemDetails/${problemId}",method = RequestMethod.GET)
+    @RequestMapping(value = "/problemDetails/{problemId}",method = RequestMethod.GET)
     public String showLoginPage(@PathVariable("problemId") String id, HttpSession session, Model model){
         session.setAttribute("problemCategories", Category.values());
 
