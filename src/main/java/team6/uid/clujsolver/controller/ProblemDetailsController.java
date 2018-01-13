@@ -13,8 +13,7 @@ import team6.uid.clujsolver.model.Urgency;
 import team6.uid.clujsorver.service.ProblemService;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 @Controller
