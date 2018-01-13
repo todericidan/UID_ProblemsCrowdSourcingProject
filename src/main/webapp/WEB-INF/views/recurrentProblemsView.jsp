@@ -75,13 +75,15 @@
             		<td>Parking</td>
             		<td>Car with number CJ11ZZZ is parked on the bike lane.</td>
             		<td>str. George Baritiu, nr. 28</td>
-            		<td><input type="checkbox" id="test5" /></td>
+            		<td><p><input type="checkbox" id="test5" /></p></td>
                 </tr>
                 
 
             </table>
         </div>
-
+		<button class="btn waves-effect waves-light" type="submit" name="action">Merge selected problems
+		    <i class="material-icons right">send</i>
+		</button>
 
     </div>
 </div>

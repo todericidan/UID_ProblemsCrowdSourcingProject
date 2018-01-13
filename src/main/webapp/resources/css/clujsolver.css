@@ -236,3 +236,8 @@
 .address-signal-problem{
     margin-left: 35px !important;
 }
+
+input#test5{
+	opacity: inherit;
+	pointer-events: visible;
+}
