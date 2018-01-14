@@ -44,7 +44,7 @@
 
                         <div class="input-field col s3">
                             <select name="category" class="filter-drop" id="categoryId">
-                                <option value="Category">Category</option>
+                                <option value="NONE">Category</option>
                                 <c:forEach items="${problemCategories}" var="category">
                                     <option value="${category}">${category.title()}</option>
                                 </c:forEach>
@@ -98,12 +98,44 @@
 
         $(function(){
             $('#filter').click(function() {
-                Materialize.toast('You have filtered the results', 4000);
-                //var cat = document.getElementById("categoryId").value;
-                //console.log(cat);
-                //if(cat!="Category") {
-                    window.location.href = "/filterStats";
-                //}
+
+                var cat = document.getElementById("categoryId").value;
+                var startDate = document.getElementById("datefrom").value;
+                var stopDate = document.getElementById("dateto").value;
+
+                if(cat=="NONE" && startDate =="" && stopDate=="" ){
+
+                    Materialize.toast('Fill in at least on filter!', 4000,'red');
+
+                }else{
+                    if(startDate =="" && stopDate =="") {
+                        Materialize.toast('Filtering...', 4000,'green');
+                        window.location.href = "/filterStats";
+                    }else{
+                        if(startDate =="" || stopDate =="") {
+                            if(startDate=="") {
+                                Materialize.toast('Filtering...', 4000,'green');
+                                var rUrl = "/filterStats/" + stopDate;
+                                window.location.href = rUrl;
+                            }else{
+                                Materialize.toast('Filtering...', 4000,'green');
+                                var rUrl = "/filterStats/" + startDate;
+                                window.location.href = rUrl;
+                            }
+                        }else {
+                            Materialize.toast('Filtering...', 4000,'green');
+                            var rUrl = "/filterStats/" + startDate + "/" + stopDate;
+                            window.location.href = rUrl;
+                        }
+                    }
+                }
+
+
+            });
+
+            $('#clear').click(function() {
+                Materialize.toast('Clearing filters...', 4000,'blue');
+                window.location.href = "/problemStats";
             });
         });
 
