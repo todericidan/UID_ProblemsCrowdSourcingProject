@@ -112,49 +112,25 @@
 
             <div class="row">
                 <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s4">UpVote:
-                    <%--<a href="/upVote/${problem.id}">--%>
+                <span class="grey-text text-darken-1 lighten-3 col s2">UpVote:
                         <i id ="up_vote" class="small material-icons">thumb_up</i>
-                    <%--</a>--%>
                 </span>
+                    <span id="total_upv" class="grey-text text-darken-1 lighten-3 col s2">${problem.upVotes} upVotes</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
                 </div>
             </div>
 
             <div class="row">
                 <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s4">DownVote:
-                    <%--<a href="/downVote/${problem.id}">--%>
-                        <i id="down_vote" class="small material-icons">thumb_down</i>
-                    <%--</a>--%>
+                <span class="grey-text text-darken-1 lighten-3 col s2">DownVote:
+                    <i id="down_vote" class="small material-icons">thumb_down</i>
                 </span>
+                    <span id="total_dnv" class="grey-text text-darken-1 lighten-3 col s2">${problem.downVotes} downVotes</span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="card container grey lighten-5">
-                    <span id="total_upv" class="grey-text text-darken-1 lighten-3 col s4">${problem.upVotes} upVotes</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="card container grey lighten-5">
-                    <span id="total_dnv" class="grey-text text-darken-1 lighten-3 col s4">${problem.downVotes} downVotes</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
                 </div>
             </div>
 
@@ -167,6 +143,48 @@
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
                     <span class="grey-text text-darken-1 lighten-3 col s2"></span>
+                </div>
+            </div>
+            <div id="comment_section" style="display:none;">
+                <div id="comments">
+                    <div class="card container grey lighten-5">
+                    <span class="grey-text text-darken-1 lighten-3 col s8">
+                        <div class="collection">
+                                <span class="btn-faded">"I also noticed it today. The problem is still there."</span>
+                        </div>
+                    </span>
+                    </div>
+
+                    <div class="card container grey lighten-5">
+                    <span class="grey-text text-darken-1 lighten-3 col s8">
+                        <div class="collection">
+                                <span class="btn-faded">"Finally this problem is fixed"</span>
+                        </div>
+                    </span>
+                    </div>
+
+                    <div id = "new_comment_div" style="display:none;" class="card container grey lighten-5">
+                    <span class="grey-text text-darken-1 lighten-3 col s8">
+                        <div class="collection">
+                                <span id = "new_comment" class="btn-faded">""</span>
+                        </div>
+                    </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card container grey lighten-5">
+                    <span class="grey-text text-darken-1 lighten-3 col s10">
+
+                    <div class="input-field col s8">
+                        <input placeholder="Type" id="comment_field" type="text" class="validate">
+                    </div>
+                    <div class="input-field col s2">
+                        <button id ="comment_btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                    </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -183,6 +201,15 @@
                 $('#problem_status')[0].innerHTML="Currently solving";
                 $('#take_btn').fadeOut(800);
                 Materialize.toast('The problem was assigned to you', 4000)
+            });
+        });
+
+        $(function(){
+            $('#comment_btn').click(function() {
+                var newComment = $('#comment_field')[0].value;
+                newComment = '"'+newComment+'"';
+                $('#new_comment')[0].innerHTML=newComment;
+                document.getElementById('new_comment_div').style.display = "block";
             });
         });
 
@@ -210,8 +237,6 @@
                         Materialize.toast('You have upvoted the problem', 4000)
                     }
                 }
-
-
             });
         });
 
@@ -232,8 +257,20 @@
                         Materialize.toast('You have downvoted the problem', 4000)
                     }
                 }
+            });
+        });
 
+        $(function(){
+            $('#comment').click(function() {
+                if($('#comment').css("color")==="rgb(3, 155, 229)") {
+                    $('#comment_section').fadeOut(800);
+                    $('#comment').css('color', '#757575');
+                }
 
+                else{
+                    $('#comment_section').fadeIn(800);
+                    $('#comment').css('color', '#039be5');
+                }
             });
         });
     });
