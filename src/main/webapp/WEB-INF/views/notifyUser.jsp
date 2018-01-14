@@ -25,27 +25,21 @@
         <div class="card-content card-top-title">
             <span class="card-title  activator grey-text text-darken-4">User behavior control</span>
         </div>
-
-        <div class="row">
-        	<div class="input-field col s12">
-			    <select multiple>
-			       <option value="" disabled selected>User</option>
-			        <option value="1">Instalator2000 - instalatoru@yahoo.com</option>
-			        <option value="2">IonIonescu69 - yon@gmail.com</option>
-			        <option value="3">User - user@example.com</option>
-			        <option value="4">ABCD123 - abcd@yahoo.com</option>
-			    </select>
-			  </div>
-            
-        </div>
+		
+		
 
         <div class="row">
             <div class="col s12">
                 <div class="row">
+                	<div class="input-field col s12">
+			          <input type="text" id="autocomplete-input" class="autocomplete">
+			          <label for="autocomplete-input">User</label>
+			        </div>
                     <div class="input-field col s12">
                         <textarea id="description" class="materialize-textarea"></textarea>
                         <label for="description">Message</label>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -64,11 +58,21 @@
 
     </div>
 </div>
-<script language="Javascript">
-    $(document).ready(function() {
-        $('select').material_select();
 
-    });
+<script language="Javascript">
+$('input.autocomplete').autocomplete({
+    data: {
+      "Instalator2000-instalatoru@yahoo.com": null,
+      "IonIonescu69-yon@gmail.com": null,
+      "User-user@example.com": null,
+      "ABCD123-abcd@yahoo.com": null
+    },
+    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+    onAutocomplete: function(val) {
+      // Callback function when value is autcompleted.
+    },
+    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+  });
 </script>
 
 </body>
