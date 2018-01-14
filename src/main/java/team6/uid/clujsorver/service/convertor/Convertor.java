@@ -2,6 +2,7 @@ package team6.uid.clujsorver.service.convertor;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import team6.uid.clujsolver.model.CommunityProblem;
 
 import java.io.File;
 import java.io.FileNotFoundException;

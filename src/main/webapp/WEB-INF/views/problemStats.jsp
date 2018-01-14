@@ -1,29 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ page import="java.io.*" %>
-<%@ page import="java.util.*" %>
-
-<%!
-    // --- String Join Function converts from Java array to javascript string.
-    public String join(ArrayList<?> arr, String del)
-    {
-
-        StringBuilder output = new StringBuilder();
-
-        for (int i = 0; i < arr.size(); i++)
-        {
-
-            if (i > 0) output.append(del);
-
-            // --- Quote strings, only, for JS syntax
-            if (arr.get(i) instanceof String) output.append("\"");
-            output.append(arr.get(i));
-            if (arr.get(i) instanceof String) output.append("\"");
-        }
-
-        return output.toString();
-    }
-%>
 
 
 <html>
@@ -44,31 +20,10 @@
 <body>
 
 
-<script>
-    <%
-       // --- Create two Java Arrays
-        ArrayList<String> months = new ArrayList<String>();
-        ArrayList<Integer> users = new ArrayList<Integer>();
-
-       // --- Loop 10 times and create 10 string dates and 10 users
-        int counter = 1;
-        while(counter < 11)
-        {
-            months.add("Aug " + counter);
-            users.add(counter++);
-        }
-    %>
-
-    // --- add a comma after each value in the array and convert to javascript string representing an array
-    var monthData = [<%= join(months, ",") %>];
-    var userData = [<%= join(users, ",") %>];
-
-
-</script>
 
 
 <jsp:include page="../../resources/components/navbar.jsp"/>
-
+<c:url var="filterUrl" value="/filterStats"/>
 <body class="blue-grey lighten-5">
 
 
@@ -88,11 +43,11 @@
                         </div>
 
                         <div class="input-field col s3">
-                            <select class="filter-drop" multiple>
-                                <option value="" disabled selected>Type</option>
-                                <option value="1">Illegal Parking</option>
-                                <option value="2">Disturbing Public Order</option>
-                                <option value="3">Water networks</option>
+                            <select name="category" class="filter-drop" id="categoryId">
+                                <option value="Category">Category</option>
+                                <c:forEach items="${problemCategories}" var="category">
+                                    <option value="${category}">${category.title()}</option>
+                                </c:forEach>
                             </select>
                         </div>
 
@@ -115,8 +70,8 @@
                     </div>
 
                     <div class="row button-row">
-                        <a class="waves-effect waves-light btn cyan darken-3 btn-right">Filter</a>
-                        <a class="waves-effect waves-light btn grey lighten-4 btn-right btn-faded">Clear Filters</a>
+                        <a id="filter" class="waves-effect waves-light btn cyan darken-3 btn-right">Filter</a>
+                        <a id="clear" class="waves-effect waves-light btn grey lighten-4 btn-right btn-faded">Clear Filters</a>
                     </div>
 
                 </div>
@@ -141,6 +96,17 @@
             selectYears: 15 // Creates a dropdown of 15 years to control year
         });
 
+        $(function(){
+            $('#filter').click(function() {
+                Materialize.toast('You have filtered the results', 4000);
+                //var cat = document.getElementById("categoryId").value;
+                //console.log(cat);
+                //if(cat!="Category") {
+                    window.location.href = "/filterStats";
+                //}
+            });
+        });
+
     });
 </script>
 
@@ -158,10 +124,10 @@
             data: {
                 "type": "bar",
                 "title": {
-                    "text": "All Problems Statistics"
+                    "text": ${message}
                 },
                 "scale-x": {
-                    "labels": monthData,
+                    "labels": ${months},
                     "label":{
                         "text":"Dates",
                         "font-size":14,
@@ -173,7 +139,7 @@
                     "background-color": "#616161"
                 },
                 "series": [{
-                    "values": userData
+                    "values": ${values}
                 }]
             }
         });

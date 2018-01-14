@@ -38,11 +38,11 @@
                         </div>
 
                         <div class="input-field col s3">
-                            <select class="filter-drop" multiple>
-                                <option value="" disabled selected>Type</option>
-                                <option value="1">Illegal Parking</option>
-                                <option value="2">Disturbing Public Order</option>
-                                <option value="3">Water networks</option>
+                            <select name="category" class="filter-drop">
+                                <option value="" disabled selected>Category</option>
+                                <c:forEach items="${problemCategories}" var="category">
+                                    <option value="${category}">${category.title()}</option>
+                                </c:forEach>
                             </select>
                         </div>
 
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="row button-row">
-                        <a id="filter" href="${filterUrl}" class="waves-effect waves-light btn cyan darken-3 btn-right">Filter</a>
+                        <a id="filter" class="waves-effect waves-light btn cyan darken-3 btn-right">Filter</a>
                         <a id="clear" class="waves-effect waves-light btn grey lighten-4 btn-right btn-faded">Clear Filters</a>
                     </div>
 
@@ -109,6 +109,7 @@
         $(function(){
             $('#filter').click(function() {
                 Materialize.toast('You have filtered the results', 4000)
+                window.location.href ="/filterChart";
             });
         });
 

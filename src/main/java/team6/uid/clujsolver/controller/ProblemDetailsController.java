@@ -56,7 +56,7 @@ public class ProblemDetailsController {
     }
 
     @RequestMapping(value = "/changeStatus/{problemId}",method = RequestMethod.GET)
-    public String chageStatus(@PathVariable("problemId") String id, Model model){
+    public String changeStatus(@PathVariable("problemId") String id, Model model){
         problemService.changeStatus(id,Status.SOLVED);
         CommunityProblem communityProblem = problemService.getProblemById(id);
         model.addAttribute("problem", communityProblem);
@@ -64,7 +64,7 @@ public class ProblemDetailsController {
     }
 
     @RequestMapping(value = "/changeType/{problemId}",method = RequestMethod.GET)
-    public String chageType(@PathVariable("problemId") String id, Model model){
+    public String changeType(@PathVariable("problemId") String id, Model model){
         problemService.changeCategory(id,Category.PARKING);
         CommunityProblem communityProblem = problemService.getProblemById(id);
         model.addAttribute("problem", communityProblem);
