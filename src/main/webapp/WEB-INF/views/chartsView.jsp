@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Charts</title>
@@ -17,6 +17,7 @@
 
 
 <jsp:include page="../../resources/components/navbar.jsp"/>
+<c:url var="filterUrl" value="/filterChart"/>
 
 <body class="blue-grey lighten-5">
 
@@ -64,8 +65,8 @@
                     </div>
 
                     <div class="row button-row">
-                        <a class="waves-effect waves-light btn cyan darken-3 btn-right">Filter</a>
-                        <a class="waves-effect waves-light btn grey lighten-4 btn-right btn-faded">Clear Filters</a>
+                        <a id="filter" href="${filterUrl}" class="waves-effect waves-light btn cyan darken-3 btn-right">Filter</a>
+                        <a id="clear" class="waves-effect waves-light btn grey lighten-4 btn-right btn-faded">Clear Filters</a>
                     </div>
 
                 </div>
@@ -75,68 +76,17 @@
 
         <div id="myTable" style="height:700px">
 
-            <h1 id="chartTitle" style="text-align:center">Top 10 Problem ${title} Of the Week</h1>
+            <h1 id="chartTitle" style="text-align:center">Top 10 Problem ${title} </h1>
             <table border ="0">
-                <tr>
-                    <td>1</td>
-                    <td>dorel_instalatorul62</td>
-                    <td>2280</td>
-                    <td>points</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>ridicariauto_avis</td>
-                    <td>2300</td>
-                    <td>points</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>ionion_canalizari</td>
-                    <td>1700</td>
-                    <td>points</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>dorel_instalatorul63</td>
-                    <td>1600</td>
-                    <td>points</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>ridicariauto_avis2</td>
-                    <td>1580</td>
-                    <td>points</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>toni_canalizari</td>
-                    <td>1550</td>
-                    <td>points</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>dorel_instalatorul633</td>
-                    <td>1470</td>
-                    <td>points</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>ridicariauto_avi321s</td>
-                    <td>1450</td>
-                    <td>points</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>tractorari_bat</td>
-                    <td>1350</td>
-                    <td>points</td>
-                </tr>
-                <tr>
-                <td>10</td>
-                <td>interioare_instalatii_garnituri</td>
-                <td>1000</td>
-                <td>points</td>
-                </tr>
+                <c:forEach items="${ranks}" var="rank">
+                    <tr>
+                        <td>${rank.id}</td>
+                        <td>${rank.username}</td>
+                        <td>${rank.score}</td>
+                        <td>points</td>
+                    </tr>
+                </c:forEach>
+
 
             </table>
         </div>
@@ -155,6 +105,13 @@
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15 // Creates a dropdown of 15 years to control year
         });
+
+        $(function(){
+            $('#filter').click(function() {
+                Materialize.toast('You have filtered the results', 4000)
+            });
+        });
+
 
     });
 </script>

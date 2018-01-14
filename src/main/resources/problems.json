@@ -1,4 +1,5 @@
-[ {
+[
+  {
         "id":"1",
         "title":"Reflector Broken",
         "description":"A reflector is broken on the street. The light keeps flickering on and off and it disturbs drivers.",
@@ -49,4 +50,31 @@
           "text": "I passed through there today. It's realy anoying."
         }
       ]
-    } ]
+    }
+  , {
+  "id":"3",
+  "title":"Flooded street",
+  "description":"The whole street is flooded!!!",
+  "latitude":"46.7855",
+  "longitude":"23.580966",
+  "address":"Ciresilor Street",
+  "urgencyLevel":"HIGH",
+  "category":"WATER",
+  "date":"13 January, 2018",
+  "status":"UNSOLVED",
+  "imageUrls":["https://www.thelocal.de/userdata/images/article/f8430b1124677f9c49e45b2f40200aa5771130e99e6e97a682742035e359cd90.jpg"],
+  "upVotes":"300",
+  "downVotes":"0",
+  "validations":"0",
+  "comments":[
+    {
+      "username":"Tudor Miron",
+      "text": "The solving must be URGENT."
+    },
+    {
+      "username":"Marcel Ionica",
+      "text": "I am very sad to see this still standing here."
+    }
+  ]}
+
+]
