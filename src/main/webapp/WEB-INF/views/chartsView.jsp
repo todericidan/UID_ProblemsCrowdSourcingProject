@@ -38,8 +38,8 @@
                         </div>
 
                         <div class="input-field col s3">
-                            <select name="category" class="filter-drop">
-                                <option value="" disabled selected>Category</option>
+                            <select name="category" class="filter-drop"  id="categoryId">
+                                <option value="NONE" >Category</option>
                                 <c:forEach items="${problemCategories}" var="category">
                                     <option value="${category}">${category.title()}</option>
                                 </c:forEach>
@@ -76,7 +76,7 @@
 
         <div id="myTable" style="height:700px">
 
-            <h1 id="chartTitle" style="text-align:center">Top 10 Problem ${title} </h1>
+            <h1 id="chartTitle" style="text-align:center"> ${message} </h1>
             <table border ="0">
                 <c:forEach items="${ranks}" var="rank">
                     <tr>
@@ -108,9 +108,44 @@
 
         $(function(){
             $('#filter').click(function() {
-                Materialize.toast('You have filtered the results', 4000)
-                window.location.href ="/filterChart";
+                var cat = document.getElementById("categoryId").value;
+                var startDate = document.getElementById("datefrom").value;
+                var stopDate = document.getElementById("dateto").value;
+
+                if(cat=="NONE" && startDate =="" && stopDate=="" ){
+
+                    Materialize.toast('Fill in at least on filter!', 4000,'red');
+
+                }else {
+                    if (startDate == "" && stopDate == "") {
+                        Materialize.toast('Filtering...', 4000, 'green');
+                        window.location.href = "/filterChart";
+                    } else {
+                        if (startDate == "" || stopDate == "") {
+                            if (startDate == "") {
+                                Materialize.toast('Filtering...', 4000, 'green');
+                                var rUrl = "/filterChart/" + stopDate;
+                                window.location.href = rUrl;
+                            } else {
+                                Materialize.toast('Filtering...', 4000, 'green');
+                                var rUrl = "/filterChart/" + startDate;
+                                window.location.href = rUrl;
+                            }
+                        } else {
+                            Materialize.toast('Filtering...', 4000, 'green');
+                            var rUrl = "/filterChart/" + startDate + "/" + stopDate;
+                            window.location.href = rUrl;
+                        }
+                    }
+                }
             });
+
+            $('#clear').click(function() {
+                Materialize.toast('Clearing filters...', 4000,'blue');
+                var rurl="/chart"+"${title}";
+                window.location.href = rurl;
+            });
+
         });
 
 
