@@ -28,6 +28,7 @@ public class ProblemService {
     public static ProblemService getInstance(){
         if(instance == null) {
             instance = new ProblemService();
+            instance.setProblems(new ProblemConvertor().fromJsonToList("problems.json"));
         }
         return instance;
 
@@ -48,10 +49,15 @@ public class ProblemService {
     }
 
 
-    public List<CommunityProblem> applyFilters(Category filterCategory, Status filterStatus, Urgency filterUrgency, Popularity filterPopularity, String startDateString, String stopDateString){
+    public List<CommunityProblem> applyFilters(Category filterCategory,
+                                               Status filterStatus,
+                                               Urgency filterUrgency,
+                                               Popularity filterPopularity,
+                                               String startDateString,
+                                               String stopDateString){
         List<CommunityProblem> list = new ArrayList<CommunityProblem>();
 
-        DateFormat format = new SimpleDateFormat("dd MMMM,yyyy", Locale.ENGLISH);
+        DateFormat format = new SimpleDateFormat("dd MMMM, yyyy", Locale.ENGLISH);
         Date startDate = null;
         Date stopDate = null;
         Date date = null;
@@ -81,7 +87,7 @@ public class ProblemService {
                     e.printStackTrace();
                 }
 
-                if(!(startDate.before(date)|| startDate.equals(date) )){
+                if(!( (startDate.before(date)) || (startDate.equals(date)) )){
                     flag = 0;
                 }
             }
@@ -111,13 +117,13 @@ public class ProblemService {
             }
             if(!filterPopularity.equals(Popularity.ANY)){
                 //on the spot decision
-                if((p.getUpVotes()-p.getDownVotes()<5)&&(filterPopularity.equals("POPULAR"))){
+                if((p.getUpVotes()-p.getDownVotes()<80)&&(filterPopularity.equals(Popularity.POPULAR))){
                     flag = 0;
                 }
-                if((p.getUpVotes()-p.getDownVotes()<0)&&(filterPopularity.equals("AVERAGE"))){
+                if((p.getUpVotes()-p.getDownVotes()<0)&&(filterPopularity.equals(Popularity.AVERAGE))){
                     flag = 0;
                 }
-                if((p.getUpVotes()-p.getDownVotes()>0)&&(filterPopularity.equals("UNPOPULAR"))){
+                if((p.getUpVotes()-p.getDownVotes()>0)&&(filterPopularity.equals(Popularity.UNPOPULAR))){
                     flag = 0;
                 }
             }
@@ -135,6 +141,56 @@ public class ProblemService {
 
         return list;
     }
+
+
+    public List<CommunityProblem> applyFilters(Category filterCategory,
+                                               Status filterStatus,
+                                               Urgency filterUrgency,
+                                               Popularity filterPopularity){
+        List<CommunityProblem> list = new ArrayList<CommunityProblem>();
+
+
+        for(CommunityProblem p: problems) {
+            int flag =1;
+
+            if(!filterCategory.equals(Category.ANY)) {
+                if (!filterCategory.equals(p.getCategory())) {
+                    flag = 0;
+                }
+            }
+            if(!filterStatus.equals(Status.ANY)){
+                if(!filterStatus.equals(p.getStatus())){
+                    flag = 0;
+                }
+            }
+            if(!filterPopularity.equals(Popularity.ANY)){
+                if((p.getUpVotes()-p.getDownVotes()<80)&&(filterPopularity.equals(Popularity.POPULAR))){
+                    flag = 0;
+                }
+                if((p.getUpVotes()-p.getDownVotes()<0)&&(filterPopularity.equals(Popularity.AVERAGE))){
+                    flag = 0;
+                }
+                if((p.getUpVotes()-p.getDownVotes()>0)&&(filterPopularity.equals(Popularity.UNPOPULAR))){
+                    flag = 0;
+                }
+            }
+
+            if(!filterUrgency.equals(Urgency.ANY)){
+                if(!filterUrgency.equals(p.getUrgencyLevel())){
+                    flag = 0;
+                }
+            }
+
+            if(flag == 1){
+                list.add(p);
+            }
+
+        }
+
+        return list;
+    }
+
+
 
     public List<CommunityProblem> search(String keyWords){
         List<CommunityProblem> list = new ArrayList<CommunityProblem>();
@@ -199,8 +255,5 @@ public class ProblemService {
     public void setProblems(List<CommunityProblem> problems) {
         this.problems = problems;
     }
-
-
-
 
 }

@@ -21,7 +21,7 @@
 <nav class="cyan darken-3">
     <div class="navbar-fixed">
         <div class="nav-wrapper navbar">
-            <a href="<c:url value="/problems/${problem.id}"/>" class="brand-logo logo"><img class="logo-img" src="${pageContext.request.contextPath}/resources/img/logo.png"></img>
+            <a href="<c:url value="/problems/${problem.id}"/>" class="brand-logo logo"><img class="logo-img" src="${pageContext.request.contextPath}/resources/img/logo.png"/>
             </a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -30,7 +30,7 @@
                     <form>
                         <div class="input-field">
                             <input id="search" type="search" required>
-                            <i class="material-icons cyan-text text-darken-4">search</i>
+                            <i class="material-icons cyan-text text-darken-4" id = "searchBtn">search</i>
                         </div>
                     </form>
                 </li>
@@ -85,5 +85,23 @@
         document.getElementById("chart-options").style.display = "none";
         document.getElementById("charts-btn").style.backgroundColor="#ffffff";
     }
+
+    $(document).ready(function() {
+        $(function(){
+            $('#searchBtn').click(function() {
+                var key =  document.getElementById("search").value;
+                //console.log(key);
+                if(key!=""){
+                    Materialize.toast('Searching...', 4000,'green');
+                    var rUrl = "/searchResults/" + key;
+                    window.location.href =rUrl;
+                }else{
+                    Materialize.toast('Please input a key word!', 4000,'red');
+                }
+            });
+
+        });
+
+    });
 
 </script>

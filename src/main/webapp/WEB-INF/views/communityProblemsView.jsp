@@ -30,9 +30,9 @@
                 <div class="collapsible-header "><i id="filters" class="material-icons">filter_list</i>Filters</div>
                 <div class="collapsible-body ">
                     <div class="row">
-                        <div class="input-field col s4">
-                            <select  class="filter-drop" multiple>
-                                <option value="" disabled selected>Category</option>
+                        <div class="input-field col s4" >
+                            <select  class="filter-drop" id="categoryId">
+                                <option value="NONE" >Category</option>
                                 <c:forEach items="${problemCategories}" var="category">
                                     <option value="${category}">${category.title()}</option>
                                 </c:forEach>
@@ -40,8 +40,8 @@
                         </div>
 
                         <div class="input-field col s3">
-                            <select class="filter-drop" multiple>
-                                <option value="" disabled selected>Status</option>
+                            <select class="filter-drop" id="statusId">
+                                <option value="NONE">Status</option>
                                 <c:forEach items="${statusTypes}" var="status">
                                     <option value="${status}">${status.title()}</option>
                                 </c:forEach>
@@ -49,8 +49,8 @@
                         </div>
 
                         <div class="input-field col s2">
-                            <select class="filter-drop" multiple>
-                                <option value="" disabled selected>Urgency</option>
+                            <select class="filter-drop" id="urgencyId">
+                                <option value="NONE">Urgency</option>
                                 <c:forEach items="${urgencyTypes}" var="urgency">
                                     <option value="${urgency}">${urgency.title()}</option>
                                 </c:forEach>
@@ -58,8 +58,8 @@
                         </div>
 
                         <div class="input-field col s3">
-                            <select class="filter-drop" multiple>
-                                <option value="" disabled selected>Popularity</option>
+                            <select class="filter-drop" id="popularityId">
+                                <option value="NONE">Popularity</option>
                                 <c:forEach items="${popularityTypes}" var="popularity">
                                     <option value="${popularity}">${popularity.title()}</option>
                                 </c:forEach>
@@ -83,8 +83,8 @@
                     </div>
 
                     <div class="row button-row">
-                        <a class="waves-effect waves-light btn cyan darken-3 btn-right">Filter</a>
-                        <a class="waves-effect waves-light btn grey lighten-4 btn-right btn-faded">Clear Filters</a>
+                        <a id="filter" class="waves-effect waves-light btn cyan darken-3 btn-right">Filter</a>
+                        <a id="clear" class="waves-effect waves-light btn grey lighten-4 btn-right btn-faded">Clear Filters</a>
                     </div>
                 </div>
             </li>
@@ -100,18 +100,18 @@
 
 <div class="row">
     <div class="info-markers">
-    <div class="chip">
-        <img src="http://torens-auto.com/local/templates/torens/img/map-marker-icon2.png" alt="Unsolved Problems">
-        Unsolved Problems
-    </div>
-    <div class="chip">
-        <img src="http://eskaykids.com.au/wp-content/uploads/2017/08/location-icon.png" alt="Problems Getting Solved">
-        Problems Getting Solved
-    </div>
-    <div class="chip">
-        <img src="https://www.adswerve.com/wp-content/uploads/2017/09/map-marker-icon.png" alt="Solved Problems">
-        Solved Problems
-    </div>
+        <div class="chip">
+            <img src="http://torens-auto.com/local/templates/torens/img/map-marker-icon2.png" alt="Unsolved Problems">
+            Unsolved Problems
+        </div>
+        <div class="chip">
+            <img src="http://eskaykids.com.au/wp-content/uploads/2017/08/location-icon.png" alt="Problems Getting Solved">
+            Problems Getting Solved
+        </div>
+        <div class="chip">
+            <img src="https://www.adswerve.com/wp-content/uploads/2017/09/map-marker-icon.png" alt="Solved Problems">
+            Solved Problems
+        </div>
     </div>
 </div>
 
@@ -262,7 +262,7 @@
 
                 infoWindow.setPosition(new google.maps.LatLng(pos.lat + 0.0015, pos.lng));
                 infoWindow.setContent('You are here. ' +
-                    '<a href=${newProblem}>Click to signal a problem.</a>');
+                        '<a href=${newProblem}>Click to signal a problem.</a>');
                 infoWindow.open(map);
                 map.setCenter(pos);
 
@@ -299,8 +299,8 @@
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
-            'Error: The Geolocation service failed.' :
-            'Error: Your browser doesn\'t support geolocation.');
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
     }
 
@@ -323,7 +323,54 @@
         if($('#firstUse').val() == "true"){
             $('.tap-target').tapTarget('open');
         }
-       // $('.tap-target').tapTarget('close');
+        // $('.tap-target').tapTarget('close');
+
+        $(function(){
+            $('#clear').click(function() {
+                Materialize.toast('Clearing filters...', 4000,'blue');
+                var rurl="/problemsReset";
+                window.location.href = rurl;
+            });
+
+
+            $('#filter').click(function() {
+                var cat = $('#categoryId').val();
+                var status = $('#statusId').val();
+                var popularity = $('#popularityId').val();
+                var urgency = $('#urgencyId').val();
+                var startDate = document.getElementById("datefrom").value;
+                var stopDate = document.getElementById("dateto").value;
+
+                if(cat=="NONE" && status=="NONE" && popularity=="NONE" && urgency=="NONE" && startDate == "" && stopDate == "" ){
+
+                    Materialize.toast('Fill in at least on filter!', 4000,'red');
+
+                }else {
+                    if (startDate == "" && stopDate == "") {
+                        Materialize.toast('Filtering...', 4000, 'green');
+                        var rUrl = "/filterProblems/" + cat + "/" + status + "/" + popularity + "/" + urgency;
+                        window.location.href = rUrl;
+                    } else {
+                        if (startDate == "" || stopDate == "") {
+                            if (startDate == "") {
+                                Materialize.toast('Filtering...', 4000, 'green');
+                                var rUrl = "/filterProblems/"+ cat + "/" + status + "/" + popularity + "/" + urgency+"/" + stopDate;
+                                window.location.href = rUrl;
+                            } else {
+                                Materialize.toast('Filtering...', 4000, 'green');
+                                var rUrl = "/filterProblems/"+ cat + "/" + status + "/" + popularity + "/" + urgency + "/" + startDate;
+                                window.location.href = rUrl;
+                            }
+                        } else {
+                            Materialize.toast('Filtering...', 4000, 'green');
+                            var rUrl = "/filterProblems/"+ cat + "/" + status + "/" + popularity + "/" + urgency + "/" + startDate + "/" + stopDate;
+                           window.location.href = rUrl;
+                        }
+                    }
+                }
+            });
+
+        });
     });
 
 

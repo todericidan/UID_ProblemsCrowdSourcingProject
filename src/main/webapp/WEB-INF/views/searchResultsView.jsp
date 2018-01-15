@@ -20,13 +20,14 @@
     <div class="card container grey lighten-5">
 
         <div class="card-content card-top-title">
-            <span class="card-title  activator grey-text text-darken-4">Search results for "search text"</span>
+            <span class="card-title  activator grey-text text-darken-4">Search results for "${keyMessage}"</span>
         </div>
 
         <ul class="collection">
-            <c:forEach items="${problems}" var="problem">
+            <c:forEach items="${problemsSearchList}" var="problem">
             <li class="collection-item">
-                <a class="collection-item avatar avatar-search">
+                <c:url var="url" value="/problemDetails/${problem.id}"/>
+                <a class="collection-item avatar avatar-search" href="${url}">
                         <img class="material-icons circle" src="${problem.imageUrls.get(0)}"/>
                         <div class="search-result">
                             <span class="title">${problem.title}</span>
@@ -48,8 +49,5 @@
 
 
 </body>
-
-
-
 
 </html>
