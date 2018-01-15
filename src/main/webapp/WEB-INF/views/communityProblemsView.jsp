@@ -133,9 +133,9 @@
                 <span>on </span><span id="modal-date"></span>
 
                 <div>
-                    <span class="span-details"><span>Signaled under </span><span id="modal-category" class="span-category"></span></span>
-                    <span class="span-details"><span>Status: </span><span id="modal-status"></span></span>
-                    <span class="span-details"><span>Urgency: </span><span id="modal-urgency"></span></span>
+                    <span class="span-details"><span>Signaled under </span><span id="modal-category" class="span-category petrol"></span></span>
+                    <span class="span-details"><span>Status: </span><span id="modal-status" class="petrol"></span></span>
+                    <span class="span-details"><span>Urgency: </span><span id="modal-urgency" class="petrol"></span></span>
                 </div>
 
                 <div>

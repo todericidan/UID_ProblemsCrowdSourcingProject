@@ -21,7 +21,7 @@
 <nav class="cyan darken-3">
     <div class="navbar-fixed">
         <div class="nav-wrapper navbar">
-            <a href="<c:url value="/problems/${problem.id}"/>" class="brand-logo logo"><img class="logo-img" src="${pageContext.request.contextPath}/resources/img/logo.png"/>
+            <a href="<c:url value="/problems"/>" class="brand-logo logo"><img class="logo-img" src="${pageContext.request.contextPath}/resources/img/logo.png"/>
             </a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">

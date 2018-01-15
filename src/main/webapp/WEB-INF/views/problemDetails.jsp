@@ -4,7 +4,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 
-<c:url var="cityOverview" value="/problems"/>
 
 <html>
 
@@ -25,193 +24,190 @@
 
 <body class="blue-grey lighten-5">
 
-<div class="card container grey lighten-5">
-    <div class="section white">
-        <div class="row container">
-            <div class="row">
-                <div class="card container grey lighten-5">
-                    <h5 class="header">${problem.title}</h5>
-                    <span class="grey-text text-darken-1 lighten-3 col s4">Full description</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">Type</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">Location</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">Start Date</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">
-                    <c:if test="${problem.status.title().equals('Solved')}">
-                        <button id="validate_btn" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
-                    </c:if>
 
-                    </span>
-                </div>
+    <div class="card container grey lighten-5">
+
+        <div class="row details">
+            <div>
+                <img id="modal-image" class="img-details" src="${problem.imageUrls.get(0)}" alt="" />
             </div>
 
-            <div class="row">
-                <div class="card container grey lighten-5">
-                    <span class="grey-text text-darken-1 lighten-3 col s4">${problem.description}</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">
-                    ${problem.category.title()}
+            <h4 id="modal-title" class="details-title">${problem.title} </h4>
+            <span id="assigned" style="visibility: hidden;" class="new badge" data-badge-caption="I'm solving this"></span>
+            <span>at ${problem.address}</span><span id="modal-address"></span>
+
+            <span>on ${problem.date}</span><span id="modal-date"></span>
+
+            <div>
+                <span>
+                    <span class="span-details">Signaled under <span class="petrol span-category">${problem.category.title()}</span></span>
+                    <span class="span-details">Status: <span class="petrol" id="problem_status">${problem.status.title()}</span></span>
+                    <span class="span-details">Urgency: <span class="petrol">${problem.urgencyLevel.title()}</span></span>
                 </span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">
-                        <div id="map" style="height:100px"></div>
-                    </span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">${problem.solvingDate}</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                </div>
+            </div>
+            <div>
+                <p id="modal-description">${problem.description}</p>
+            </div>
+            <div>
+                <span>Up-votes: <span id="up_votes_no">${problem.upVotes}</span></span><span class="span-details" id="modal-upvotes"></span>
+                <span>Down-votes: <span id="down_votes_no">${problem.downVotes}</span></span><span id="modal-downvotes"></span>
+            </div>
+            <div class="details-actions">
+                <a href="#!" id="up_vote" class="modal-action waves-effect waves-green btn-flat"><i class="material-icons">thumb_up</i> I agree</a>
+                <a href="#!" id="down_vote" class="modal-action waves-effect waves-red btn-flat"><i class="material-icons">thumb_down</i> I don't agree</a>
+                <c:if test="${problem.status.title().equals('Solved')}">
+                    <button id="validate_btn" class="waves-effect waves-light btn amber darken-4">Validate</button>
+                </c:if>
+                <c:if test="${problem.status.title().equals('Unsolved')}">
+                    <button id="take_btn" class="waves-effect waves-light btn amber darken-4">I will solve this!</button>
+                </c:if>
+
+                    <button style="display: none" id="cancel_btn" class="waves-effect waves-light btn btn-faded grey lighten-3">I am not able to solve this anymore</button>
+                    <button style="display: none" id="mark_solved" class="waves-effect waves-light btn amber darken-4">Mark as solved</button>
+
             </div>
 
-            <div class="row">
-                <div class="card container grey lighten-5">
-                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">Status</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">${problem.address}</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">End Date</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                </div>
-            </div>
+        </div>
 
-            <div class="row">
-                <div class="card container grey lighten-5">
-                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
-                    <span id="problem_status" class="grey-text text-darken-1 lighten-3 col s2">${problem.status.title()}</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">${problem.date}</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                </div>
-            </div>
+        <ul class="collapsible" data-collapsible="expandable">
+            <li>
+                <div class="collapsible-header active"><i class="material-icons">location_on</i>Location</div>
+                <div class="collapsible-body details-map">
+                    <div id="map" style="height:220px">
 
-            <div class="row">
-                <div class="card container grey lighten-5">
-                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">
-                        <button id="take_btn" class="waves-effect waves-light btn-large amber darken-4">Take</button>
-                    </span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="card container grey lighten-5">
-                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">Urgency</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="card container grey lighten-5">
-                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2">${problem.urgencyLevel.title()}</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s2">UpVote:
-                        <i id ="up_vote" class="small material-icons">thumb_up</i>
-                </span>
-                    <span id="total_upv" class="grey-text text-darken-1 lighten-3 col s2">${problem.upVotes} upVotes</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s2">DownVote:
-                    <i id="down_vote" class="small material-icons">thumb_down</i>
-                </span>
-                    <span id="total_dnv" class="grey-text text-darken-1 lighten-3 col s2">${problem.downVotes} downVotes</span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s4"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="card container grey lighten-5">
-                <span class="grey-text text-darken-1 lighten-3 col s4">Comment:
-                    <i id="comment" class="small material-icons">comment</i>
-                </span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                    <span class="grey-text text-darken-1 lighten-3 col s2"></span>
-                </div>
-            </div>
-            <div id="comment_section" style="display:none;">
-                <div id="comments">
-                    <div class="card container grey lighten-5">
-                    <span class="grey-text text-darken-1 lighten-3 col s8">
-                        <div class="collection">
-                                <span class="btn-faded">"I also noticed it today. The problem is still there."</span>
-                        </div>
-                    </span>
-                    </div>
-
-                    <div class="card container grey lighten-5">
-                    <span class="grey-text text-darken-1 lighten-3 col s8">
-                        <div class="collection">
-                                <span class="btn-faded">"Finally this problem is fixed"</span>
-                        </div>
-                    </span>
-                    </div>
-
-                    <div id = "new_comment_div" style="display:none;" class="card container grey lighten-5">
-                    <span class="grey-text text-darken-1 lighten-3 col s8">
-                        <div class="collection">
-                                <span id = "new_comment" class="btn-faded">""</span>
-                        </div>
-                    </span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="card container grey lighten-5">
-                    <span class="grey-text text-darken-1 lighten-3 col s10">
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">comment</i>Discussion</div>
+                <div class="collapsible-body details-map">
+                    <ul class="collection">
+                        <li class="collection-item" style="background-color: #f5f5f5">
+                            <div class="input-field col s12">
+                                <textarea id="comment_field" class="materialize-textarea" required="" aria-required="true"></textarea>
+                                <label for="comment_field">Add a comment</label>
+                                <button id ="comment_btn" class="btn waves-effect waves-light btn-faded grey lighten-3" type="submit" name="action">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </li>
+                        <li id="new_comment_field" class="collection-item" style="display: none;">
+                            <div class="input-field col s12">
+                                <span class="title">Jane Doe</span>
+                                <p id="new_comment_field_text">
 
-                    <div class="input-field col s8">
-                        <input placeholder="Type" id="comment_field" type="text" class="validate">
-                    </div>
-                    <div class="input-field col s2">
-                        <button id ="comment_btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
-                    </span>
-                    </div>
+                                </p>
+
+                            </div>
+                        </li>
+                        <c:forEach items="${problem.comments}" var="comment">
+                            <li class="collection-item">
+                                <span class="title">${comment.username}</span>
+                                <p>
+                                    ${comment.text}
+                                </p>
+
+                            </li>
+                        </c:forEach>
+
+
+                    </ul>
                 </div>
-            </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h4>Confirmation</h4>
+            <p>Are you sure you are committed to solve the problem?</p>
+        </div>
+        <div class="modal-footer">
+            <a id="confirm-solve" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">No</a>
         </div>
     </div>
-</div>
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Confirmation</h4>
+            <p>Are you sure you want to give up solving the problem?</p>
+        </div>
+        <div class="modal-footer">
+            <a id="confirm-cancel" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">No</a>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h4>Confirmation</h4>
+            <p>Are you sure the problem is solved?</p>
+        </div>
+        <div class="modal-footer">
+            <a id="confirm-mark-solved" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">No</a>
+        </div>
+    </div>
 
 </body>
 
 <script language="Javascript">
+
     $(document).ready(function () {
+        $('.modal').modal();
         $('select').material_select();
-        $(function(){
-            $('#take_btn').click(function() {
-                $('#problem_status')[0].innerHTML="Currently solving";
-                $('#take_btn').fadeOut(800);
+
+            $('#take_btn').click(function(){
+                $('#modal').modal('open');
+            });
+            $('#confirm-solve').click(function() {
+                $('#problem_status').text("Currently solving");
+                $('#take_btn').hide();
+                $('#assigned').css("visibility","visible");
+                $('#cancel_btn').css("display","inline");
+                $('#mark_solved').css("display","inline");
                 Materialize.toast('The problem was assigned to you', 4000)
             });
-        });
 
-        $(function(){
-            $('#comment_btn').click(function() {
-                var newComment = $('#comment_field')[0].value;
-                newComment = '"'+newComment+'"';
-                $('#new_comment')[0].innerHTML=newComment;
-                document.getElementById('new_comment_div').style.display = "block";
+            $('#cancel_btn').click( function(){
+                $('#modal1').modal('open');
             });
-        });
+
+            $("#confirm-cancel").click(function(){
+                $("#cancel_btn").css("display","none");
+                $('#problem_status').text("Unsolved");
+                $('#assigned').css("visibility","hidden");
+                $('#take_btn').show();
+                $('#mark_solved').css("display","none");
+
+                Materialize.toast('You are not signed up for solving this anymore', 5000)
+
+            });
+            $("#mark_solved").click(function(){
+                $('#modal2').modal('open');
+            });
+
+            $("#confirm-mark-solved").click(function(){
+                $('#problem_status').text("Solved by you");
+                $('#assigned').css("visibility","hidden");
+                $('#cancel_btn').css("display","none");
+                $('#mark_solved').css("display","none");
+                $('#validate_btn').show();
+                Materialize.toast('The problem was marked as solved', 4000)
+
+            });
+
+
+            $('#comment_btn').click(function() {
+                var newComment = $('#comment_field').val();
+                $('#new_comment_field_text').text(newComment);
+                $('#new_comment_field').css("display","block");
+                $('#comment_field').val('');
+            });
+
 
         $(function(){
             $('#validate_btn').click(function() {
@@ -220,45 +216,41 @@
             });
         });
 
-        $(function(){
-            $('#up_vote').click(function() {
-                if($('#down_vote').css("color")==="rgb(3, 155, 229)") {
-                    Materialize.toast('You cannot upvote and downvote at the same time', 4000)
-                }
-                else{
-                    if($('#up_vote').css("color")==="rgb(3, 155, 229)"){
-                        $('#up_vote').css('color', '#757575');
-                        $('#total_upv')[0].innerHTML=${problem.upVotes}+" upVotes";
-                        Materialize.toast('You have removed your upvote', 4000)
-                    }
-                    else{
-                        $('#up_vote').css('color', '#039be5');
-                        $('#total_upv')[0].innerHTML=${problem.upVotes+1}+" upVotes";
-                        Materialize.toast('You have upvoted the problem', 4000)
-                    }
-                }
-            });
-        });
+        $('#up_vote').click(function() {
+                if($('#down_vote').css("color")==="rgb(0, 131, 143)") {
+                    $('#down_vote').css("color","rgb(52, 52, 52)");
+                    $('#down_votes_no').text(${problem.downVotes});
 
-        $(function(){
-            $('#down_vote').click(function() {
-                if($('#up_vote').css("color")==="rgb(3, 155, 229)") {
-                    Materialize.toast('You cannot upvote and downvote at the same time', 4000)
                 }
-                else{
-                    if($('#down_vote').css("color")==="rgb(3, 155, 229)"){
-                        $('#down_vote').css('color', '#757575');
-                        $('#total_dnv')[0].innerHTML=${problem.downVotes}+" downVotes";
-                        Materialize.toast('You have removed your downvote', 4000)
+
+                if($('#up_vote').css("color")=="rgb(0, 131, 143)"){
+                        Materialize.toast('You have already agreed on this problem.', 3000)
                     }
                     else{
-                        $('#down_vote').css('color', '#039be5');
-                        $('#total_dnv')[0].innerHTML=${problem.downVotes+1}+" downVotes";
-                        Materialize.toast('You have downvoted the problem', 4000)
+                        $('#up_vote').css('color', 'rgb(0, 131, 143)');
+                        $('#up_votes_no').text(${problem.upVotes}+1);
+                        Materialize.toast('You have agreed on the problem.', 4000)
                     }
-                }
+
             });
-        });
+
+
+            $('#down_vote').click(function() {
+                if($('#up_vote').css('color')==="rgb(0, 131, 143)") {
+                    $('#up_vote').css("color","rgb(52, 52, 52)");
+                    $('#up_votes_no').text(${problem.upVotes});
+                }
+
+                    if($('#down_vote').css("color")==="rgb(0, 131, 143)"){
+                        Materialize.toast('You have already disagreed on this problem.', 3000)
+                    }
+                    else{
+                        $('#down_vote').css('color', 'rgb(0, 131, 143)');
+                        $('#down_votes_no').text(${problem.downVotes}+1);
+                        Materialize.toast('You have disagreed on the problem.', 4000)
+                    }
+
+            });
 
         $(function(){
             $('#comment').click(function() {
@@ -280,16 +272,12 @@
     var map;
     var problems = [];
 
-    $('.js-problem').each(function() {
-        problems.push(jQuery.parseJSON($(this).val()));
-    });
-
     function initMap() {
 
         map = new google.maps.Map(document.getElementById('map'), {
             center: {
-                lat: 46.771081,
-                lng: 23.591437
+                lat: ${problem.latitude},
+                lng: ${problem.longitude}
             },
             zoom: 14
         });
@@ -313,75 +301,14 @@
             }
         };
 
-        var ctx = "${pageContext.request.contextPath}";
+        // Create marker for problem.
 
-        // Create markers.
-        problems.forEach(function(problem) {
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(problem.pb_lat, problem.pb_long),
-                icon: icons[problem.pb_status],
+                position: new google.maps.LatLng(${problem.latitude}, ${problem.longitude}),
+                icon: icons.${problem.status},
                 map: map
             });
-            google.maps.event.addListener(marker, 'click', function() {
-                $("#modal-title").text(problem.pb_title);
-                $("#modal-address").text(problem.pb_address);
-                $("#modal-category").text(problem.pb_category_title);
-                $("#modal-date").text(problem.pb_date);
-                $("#modal-description").text(problem.pb_description);
-                $("#modal-status").text(problem.pb_status_title);
-                $("#modal-urgency").text(problem.pb_urgency_title);
-                $("#modal-image").attr("src",problem.pb_image);
-                $("#problemDetailsPage").attr("href",ctx + "/problemDetails/" + problem.pb_id);
-                $("#modal-upvotes").text(problem.pb_upvotes);
-                $("#modal-downvotes").text(problem.pb_downvotes);
-                $('#modal1').modal('open');
-            });
-        });
 
-        //show user's current location
-        infoWindow = new google.maps.InfoWindow;
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-
-                infoWindow.setPosition(new google.maps.LatLng(pos.lat + 0.0015, pos.lng));
-                infoWindow.setContent('You are here. ' +
-                    '<a href=${newProblem}>Click to signal a problem.</a>');
-                infoWindow.open(map);
-                map.setCenter(pos);
-
-
-                //create current location marker
-                var marker = new google.maps.Marker({
-                    position: pos,
-                    icon: icons["CURRENT_LOCATION"],
-                    map: map
-                });
-            }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
-
-        //show an infowindow to instruct the user to check problem details
-        guideWindow = new google.maps.InfoWindow;
-        var guideWindowPos = {
-
-            //46.771738, 23.578130
-
-            lat: problems[0].pb_lat + 0.002244,
-            lng: problems[0].pb_long
-        };
-        guideWindow.setPosition(guideWindowPos);
-        guideWindow.setContent('Click on a problem to check its details.');
-        guideWindow.open(map);
 
     }
 

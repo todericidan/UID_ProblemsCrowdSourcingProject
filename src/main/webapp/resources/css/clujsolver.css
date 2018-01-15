@@ -127,11 +127,11 @@
 
 
 .problem-urgency {
-    margin-left: 22px;
+    margin-left: 20px;
 }
 
 .span-details {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .span-category {
@@ -143,6 +143,13 @@
     float: left;
     border-radius: 5%;
     max-height: 170px;
+    overflow: hidden;
+    margin-right: 30px;
+}
+
+.img-details {
+    float: left;
+    max-height: 250px;
     overflow: hidden;
     margin-right: 30px;
 }
@@ -244,4 +251,30 @@
     color: darkred;
     margin-left: 10px;
 
+}
+
+
+.details{
+    margin: 0 !important;
+}
+
+.question{
+    margin-top:20px;
+    color: #00838f;
+}
+
+.details-title{
+    padding-top: 15px;
+}
+
+.details-actions{
+    padding: 15px;
+    float: right;
+}
+.details-map{
+    padding: 0 !important;
+}
+
+.petrol{
+    color: #00838f;
 }
