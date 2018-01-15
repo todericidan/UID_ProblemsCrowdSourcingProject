@@ -4,7 +4,6 @@
 
 <c:url var="newProblem" value="/newProblem"/>
 <c:url var="cityOverview" value="/admin"/>
-<c:url var="exportData" value="/expStat"/>
 <c:url var="recurrent" value="/recurrent"/>
 
 <style type="text/css">
@@ -31,10 +30,8 @@
                     </form>
                 </li>
 
-                <li><a href="${cityOverview}">Home</a></li>
+                <li><a href="${cityOverview}">Admin dashboard</a></li>
                 <li><a href="${recurrent}">Handle recurrent problems</a></li>
-                <li><a href="${exportData}">Export data</a></li>
-                <img class="user-img" src="https://cdn3.iconfinder.com/data/icons/business-round-flat-vol-1-1/36/user_account_profile_avatar_person_student_female-512.png"></img>
             </ul>
         </div>
     </div>
