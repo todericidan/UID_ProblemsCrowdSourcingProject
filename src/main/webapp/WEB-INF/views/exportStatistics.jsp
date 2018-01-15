@@ -36,8 +36,8 @@
         </div>
     </div>
 
-    <c:forEach items="${requests}" var="request">
-        <div class="row">
+    <c:forEach items="${requests}" var="request" varStatus="loop">
+        <div id="single_request_${loop.index}" class="row">
             <div class="card container grey lighten-5">
                 <span class="grey-text text-darken-1 lighten-3 col s2">${request.requestIssueDate}</span>
                 <span class="grey-text text-darken-1 lighten-3 col s2">${request.institution}</span>
@@ -45,7 +45,7 @@
                 <span class="grey-text text-darken-1 lighten-3 col s2">${request.startDate}</span>
                 <span class="grey-text text-darken-1 lighten-3 col s2">${request.endDate}</span>
                 <span class="grey-text text-darken-1 lighten-3 col s2">
-                    <button type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
+                    <button id="submit_${loop.index}" type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
                 </span>
             </div>
         </div>
@@ -59,5 +59,24 @@
 
 </body>
 
+<script language="Javascript">
+    $(document).ready(function () {
+        $('select').material_select();
+        $(function () {
+            $('#submit_0').click(function () {
+                $('#single_request_0').fadeOut(800);
+                Materialize.toast('The request has been approved', 4000)
+            });
+        });
+        $(function () {
+            $('#submit_1').click(function () {
+                $('#single_request_1').fadeOut(800);
+                Materialize.toast('The request has been approved', 4000)
+            });
+        });
+
+
+        });
+</script>
 
 </html>

@@ -36,8 +36,9 @@ public class ExportStatisticsController {
 
     @RequestMapping(value = "/expStat",method = RequestMethod.GET)
     public String showLoginPage(Model model){
-
-        requestStatistics = prepareStatistics();
+        if(requestStatistics.isEmpty()){
+            requestStatistics = prepareStatistics();
+        }
         model.addAttribute("requests",requestStatistics);
         return "exportStatistics";
     }
