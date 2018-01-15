@@ -32,8 +32,8 @@
             <div class="col s12">
                 <div class="row">
                 	<div class="input-field col s12">
-			          <input type="text" id="autocomplete-input" class="autocomplete">
-			          <label for="autocomplete-input">User</label>
+			          <textarea readonly id="user" class="materialize-textarea"></textarea>
+			          <label for="user">User</label>
 			        </div>
                     <div class="input-field col s12">
                         <textarea id="description" class="materialize-textarea"></textarea>
@@ -59,20 +59,21 @@
     </div>
 </div>
 
-<script language="Javascript">
-$('input.autocomplete').autocomplete({
-    data: {
-      "Instalator2000-instalatoru@yahoo.com": null,
-      "IonIonescu69-yon@gmail.com": null,
-      "User-user@example.com": null,
-      "ABCD123-abcd@yahoo.com": null
-    },
-    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-    onAutocomplete: function(val) {
-      // Callback function when value is autcompleted.
-    },
-    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-  });
+<script>
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+window.onload = function() {
+	var mail = getParameterByName("mail", window.location.href);
+	document.getElementById("user").innerHTML = mail;
+	};
 </script>
 
 </body>

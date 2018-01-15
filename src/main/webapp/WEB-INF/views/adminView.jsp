@@ -22,10 +22,46 @@
 <body class="blue-grey lighten-5">
 
 <div class="row">
+	
     <div class="card container grey lighten-5">
 
         <div id="map" style="height:450px">
 
+        </div>
+
+    </div>
+    
+    <div class="contributions">
+        <div class="card">
+            <div class="card-content">
+                <h5>Reported users</h5>
+            </div>
+            <div class="card-content grey lighten-4">
+                <div id="solvedProblems">
+                    <div class="collection">
+                        <a href="#!" class="collection-item">
+                            <button type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4" style="display: inline; float: right;" id="btn1">Handle</button>
+                            <h5>Instalator2000</h5>
+                            instalatoru@yahoo.com
+                        </a>
+                        <a href="#!" class="collection-item">
+                            <button type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4" style="display: inline; float: right;" id="btn2">Handle</button>
+                            <h5>IonIonescu69</h5>
+                            yon@gmail.com
+                        </a>
+                        <a href="#!" class="collection-item">
+                            <button type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4" style="display: inline; float: right;" id="btn3">Handle</button>
+                            <h5>User</h5>
+                            user@example.com
+                        </a>
+                        <a href="#!" class="collection-item">
+                            <button type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4" style="display: inline; float: right;" id="btn4">Handle</button>
+                            <h5>ABCD123</h5>
+                            abcd@yahoo.com
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -48,6 +84,20 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcGHmxVqhxqsG7U6n67QWjFreZ_YOxEEE&callback=initMap" async defer></script>
 
+<script>
+    document.getElementById("btn1").onclick = function () {
+        location.href = "/ClujSolver/notifyUser?mail=instalatoru@yahoo.com";
+    };
+    document.getElementById("btn2").onclick = function () {
+        location.href = "/ClujSolver/notifyUser?mail=yon@gmail.com";
+    };
+    document.getElementById("btn3").onclick = function () {
+        location.href = "/ClujSolver/notifyUser?mail=user@example.com";
+    };
+    document.getElementById("btn4").onclick = function () {
+        location.href = "/ClujSolver/notifyUser?mail=abcd@yahoo.com";
+    };
+</script>
 
 
 </body>
