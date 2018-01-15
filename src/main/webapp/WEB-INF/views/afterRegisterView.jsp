@@ -38,11 +38,14 @@
 <div class="section white">
     <div class="row container">
         <h5 class="header">Sign in</h5>
-        <span class="grey-text text-darken-1 lighten-3">Enter your credentials below</span>
+        <span class="grey-text text-darken-1 lighten-3">Account created successfully! After the clicking the confirmation link sent to your email, enter your password below.</span>
+        <br>
+        <span class="grey-text text-darken-1 lighten-3">Didn't receive a confirmation email? </span><a id="send-confirmation">Click here to resend.</a>
+
         <div class="row">
             <form method="POST" action="${loginAction}">
                 <div class="input-field col s3">
-                    <input id="email" name="email" type="email" class="validate" class="validate" required="" aria-required="true">
+                    <input id="email" value="${email}" name="email" type="email" class="validate" class="validate" required="" aria-required="true">
                     <label for="email">Email</label>
                 </div>
                 <div class="input-field col s3">
@@ -67,7 +70,6 @@
             <div class="col">
                 <a class="waves-effect waves-light btn grey lighten-3 btn-faded" href="${register}">Register here</a>
             </div>
-
         </div>
     </div>
 </div>
@@ -79,6 +81,11 @@
 <script language="Javascript">
     $(document).ready(function() {
         $('.parallax').parallax();
+        Materialize.toast('Account confirmation email was sent to '+$('#email').val(), 4000)
+
+        $('#send-confirmation').click( function(){
+            Materialize.toast('Resent account confirmation email', 4000)
+        });
     });
 </script>
 

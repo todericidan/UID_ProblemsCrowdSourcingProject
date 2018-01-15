@@ -44,29 +44,33 @@
 
         <div class="row">
                 <div class="input-field col s3">
-                    <input id="email" name="email" type="text" class="validate">
+                    <input id="email" name="email" type="email" class="validate" required="" aria-required="true">
                     <label for="email">Email</label>
                 </div>
 
                 <div class="input-field col s3">
-                    <input id="name" name="name" type="text" class="validate">
+                    <input id="name" name="name" type="text" class="validate" required="" aria-required="true">
                     <label for="name">Name</label>
                 </div>
 
                 <div class="input-field col s3">
-                    <input id="password" name="password" type="password" class="validate">
+                    <input id="password" name="password" type="password" class="validate" required="" aria-required="true">
                     <label for="password">Password</label>
                 </div>
 
                 <div class="input-field col s3">
-                    <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate">
+                    <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate" required="" aria-required="true">
                     <label for="passwordConfirm">Password Confirmation</label>
+                    <div id="divCheckPasswordMatch" class="row">
+
+                    </div>
                 </div>
         </div>
+
         <div class="row">
                 <h5 class="header">What are you up to?</h5>
                 <p>
-                    <input name="accountType" type="radio" id="simpleUser" />
+                    <input name="accountType" type="radio" id="simpleUser" required/>
                     <label for="simpleUser">I only want to signal community problems</label>
                 </p>
                 <p>
@@ -99,7 +103,23 @@
 <script language="Javascript">
     $(document).ready(function() {
         $('.parallax').parallax();
+        $("#passwordConfirm").keyup(checkPasswordMatch);
     });
+
+    function checkPasswordMatch() {
+        var password = $("#password").val();
+        var confirmPassword = $("#passwordConfirm").val();
+        $("#divCheckPasswordMatch").css('float', 'right');
+
+        if (password != confirmPassword) {
+            $("#divCheckPasswordMatch").html("Passwords do not match!");
+            $("#divCheckPasswordMatch").css('color', 'darkred');
+        }
+        else{
+            $("#divCheckPasswordMatch").html("Passwords match.");
+            $("#divCheckPasswordMatch").css('color', 'green');
+        }
+    }
 </script>
 
 </body>

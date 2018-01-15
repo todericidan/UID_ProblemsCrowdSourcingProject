@@ -9,6 +9,7 @@
 <c:url var="notifiersChart" value="/chartNotifiers"/>
 <c:url var="search" value="/searchResults"/>
 <c:url var="userProfile" value="/myProfile"/>
+<c:url var="login" value="/login"/>
 
 <style type="text/css">
 
@@ -20,7 +21,7 @@
 <nav class="cyan darken-3">
     <div class="navbar-fixed">
         <div class="nav-wrapper navbar">
-            <a href="${cityOverview}" class="brand-logo logo"><img class="logo-img" src="${pageContext.request.contextPath}/resources/img/logo.png"></img>
+            <a href="<c:url value="/problems/${problem.id}"/>" class="brand-logo logo"><img class="logo-img" src="${pageContext.request.contextPath}/resources/img/logo.png"></img>
             </a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -40,7 +41,7 @@
                 <li><a>Help</a></li>
                 <li><a>Contact</a></li>
                 <li><a href="${userProfile}">Jane Doe</a></li>
-                <img href="${userProfile}" class="user-img" src="https://cdn3.iconfinder.com/data/icons/business-round-flat-vol-1-1/36/user_account_profile_avatar_person_student_female-512.png"/>
+                <li><a class="dropdown-button" href="#!" data-activates="logout-dropdown"> <img href="${userProfile}" class="user-img" src="https://cdn3.iconfinder.com/data/icons/business-round-flat-vol-1-1/36/user_account_profile_avatar_person_student_female-512.png"/></a></li>
             </ul>
         </div>
     </div>
@@ -61,6 +62,12 @@
     </ul>
 
 
+</ul>
+
+<ul id="logout-dropdown" class="dropdown-content logout-drop">
+    <li class="drop-text">
+        <a href="${login}">Logout</a>
+    </li>
 </ul>
 
 

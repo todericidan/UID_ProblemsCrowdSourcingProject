@@ -69,15 +69,15 @@
 
         <div class="row">
             <div class="input-field col s3 problem-title">
-                <input name="title" id="title" type="text" class="validate">
+                <input name="title" id="title" type="text" class="validate" required="" aria-required="true">
                 <label for="title">Title</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s4">
-                <select name="category" class="filter-drop">
-                    <option value="" disabled selected>Category</option>
+                <select name="category" class="filter-drop" required="" aria-required="true">
+                    <option value="" disabled selected >Category</option>
                     <c:forEach items="${problemCategories}" var="category">
                         <option value="${category}">${category.title()}</option>
                     </c:forEach>
@@ -89,7 +89,7 @@
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea name="description" id="description" class="materialize-textarea"></textarea>
+                        <textarea name="description" id="description" class="materialize-textarea" required="" aria-required="true"></textarea>
                         <label for="description">Description</label>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                         <input type="file" multiple>
                     </div>
                     <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one or more media files">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more media files" required="" aria-required="true">
                     </div>
                 </div>
             </div>
@@ -113,7 +113,7 @@
         <div class="row problem-urgency">
             <span>Urgency level</span>
             <p>
-                <input name="urgency" type="radio" id="high" value="HIGH"/>
+                <input name="urgency" type="radio" id="high" value="HIGH" required/>
                 <label for="high">Needs to be addressed immediately</label>
             </p>
             <p>
@@ -128,7 +128,7 @@
         </div>
         <div class="row">
             <p class="terms-check">
-                <input type="checkbox" id="terms" />
+                <input type="checkbox" id="terms" required="" aria-required="true"/>
                 <label for="terms">I agree with the terms and conditions</label>
             </p>
         </div>
@@ -239,6 +239,12 @@
         $('select').material_select();
         $('#saveAsDraft').click( function(){
             Materialize.toast('Problem saved as draft', 4000)
+        });
+        $("select[required]").css({
+            display: "inline",
+            height: 0,
+            padding: 0,
+            width: 0
         });
     });
 </script>

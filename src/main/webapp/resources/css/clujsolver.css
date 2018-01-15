@@ -236,3 +236,12 @@
 .address-signal-problem{
     margin-left: 35px !important;
 }
+.logout-drop{
+    margin-top: 65px;
+}
+
+.error-message{
+    color: darkred;
+    margin-left: 10px;
+
+}
