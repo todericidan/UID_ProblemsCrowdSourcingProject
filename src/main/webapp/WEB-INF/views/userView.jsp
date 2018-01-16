@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <title>My Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,64 +28,28 @@
             <div class="profile-header-section profile-text">
                 <h3>Jane Doe</h3>
                 <h6>Problem Solver of the Month  <i class="material-icons">verified_user</i></h6>
+                <h5 class="petrol">1450 Points</h5>
             </div>
 
             <div class="profile-header-section">
                 <h5>To do</h5>
                 <ul class="collection">
-                    <li>
-                        <a class="collection-item avatar avatar-search bar">
-                            <i class="material-icons circle">folder</i>
-
-                            <div class="search-result">
-                                <span class="title">Problem title</span>
-                                <p>Category <br><span class="new badge"></span>
-                                    Status: Unsolved, Urgency: Urgent
-                                </p>
-                            </div>
-                            <div class="secondary-content modal-action btn-faded to-do-arrow"><i class="material-icons">arrow_forward</i></div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="collection-item avatar avatar-search">
-                            <i class="material-icons circle">folder</i>
-
-                            <div class="search-result">
-                                <span class="title">Problem title</span>
-                                <p>Category <br>
-                                    Status: Unsolved, Urgency: Urgent
-                                </p>
-                            </div>
-                            <div class="secondary-content modal-action btn-faded to-do-arrow"><i class="material-icons">arrow_forward</i></div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="collection-item avatar avatar-search">
-                            <i class="material-icons circle">folder</i>
-
-                            <div class="search-result">
-                                <span class="title">Problem title</span>
-                                <p>Category <br>
-                                    Status: Unsolved, Urgency: Urgent
-                                </p>
-                            </div>
-                            <div class="secondary-content modal-action btn-faded to-do-arrow"><i class="material-icons">arrow_forward</i></div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="collection-item avatar avatar-search">
-                            <i class="material-icons circle">folder</i>
-
-                            <div class="search-result">
-                                <span class="title">Problem title</span>
-                                <p>Category <br>
-                                    Status: Unsolved, Urgency: Urgent
-                                </p>
-                            </div>
-                            <div class="secondary-content modal-action btn-faded to-do-arrow"><i class="material-icons">arrow_forward</i></div>
-                        </a>
-                    </li>
-
+                    <c:forEach items="${problems}" var="problem">
+                        <c:if test="${problem.status.title().equals('Currently solving')}">
+                            <li>
+                                <a href="<c:url value="/problemDetails/${problem.id}"/>" class="collection-item avatar avatar-search bar">
+                                    <img class="material-icons circle" src="${problem.imageUrls.get(0)}"/>
+                                    <div class="search-result">
+                                        <span class="title">${problem.title}</span>
+                                        <p>Signaled under ${problem.category.title()}<br><span class="new badge"></span>
+                                                ${problem.urgencyLevel.title()}
+                                        </p>
+                                    </div>
+                                    <div class="secondary-content modal-action btn-faded to-do-arrow"><i class="material-icons">arrow_forward</i></div>
+                                </a>
+                            </li>
+                        </c:if>
+                    </c:forEach>
                 </ul>
             </div>
 
@@ -107,64 +72,44 @@
             <div class="card-content grey lighten-4">
                 <div id="solvedProblems">
                     <div class="collection">
-                        <a href="#!" class="collection-item">
-                            <span class="new badge" data-badge-caption="Non Regulatory Parking"></span>
-                            <h5>A car is parked here since forever</h5>
-                            <i class="material-icons secondary-content btn-faded listing-arrow">arrow_forward</i>
-                            Signaled at Ion Matei street, no 12 on January 2, 2016
-                            <br>
-                            Solved on January 6, 2016 | Validated by 20 people
-                        </a>
-                        <a href="#!" class="collection-item">
-                            <span class="new badge" data-badge-caption="Non Regulatory Parking"></span>
-                            <h5>A car is parked here since forever</h5>
-                            <i class="material-icons secondary-content btn-faded listing-arrow">arrow_forward</i>
-                            Signaled at Ion Matei street, no 12 on January 2, 2016
-                            <br>
-                            Solved on January 6, 2016 | Validated by 20 people
-                        </a>
-                        <a href="#!" class="collection-item">
-                            <span class="new badge" data-badge-caption="Non Regulatory Parking"></span>
-                            <h5>A car is parked here since forever</h5>
-                            <i class="material-icons secondary-content btn-faded listing-arrow">arrow_forward</i>
-                            Signaled at Ion Matei street, no 12 on January 2, 2016
-                            <br>
-                            Solved on January 6, 2016 | Validated by 20 people
-                        </a>
-                        <a href="#!" class="collection-item">
-                            <span class="new badge" data-badge-caption="Non Regulatory Parking"></span>
-                            <h5>A car is parked here since forever</h5>
-                            <i class="material-icons secondary-content btn-faded listing-arrow">arrow_forward</i>
-                            Signaled at Ion Matei street, no 12 on January 2, 2016
-                            <br>
-                            Solved on January 6, 2016 | Validated by 20 people
-                        </a>
+                        <c:forEach items="${problems}" var="problem">
+                            <c:if test="${problem.status.title().equals('Solved')}">
+                                    <a href="<c:url value="/problemDetails/${problem.id}"/>" class="collection-item">
+                                        <span class="new badge" data-badge-caption="${problem.category.title()}"></span>
+                                        <h5>${problem.title}</h5>
+                                        <i class="material-icons secondary-content btn-faded listing-arrow">arrow_forward</i>
+                                        Signaled at ${problem.address}, on ${problem.date}
+                                        <br>
+                                        Solved on January 6, 2016 | Validated by 20 people</a>
+
+                            </c:if>
+                        </c:forEach>
                     </div>
                 </div>
 
                 <div id="problemDrafts">
                     <div class="collection">
-                        <a href="#!" class="collection-item">
+                        <a href="${newProblem}" class="collection-item">
                             <span class="new badge" data-badge-caption="Road problem"></span>
                             <h5>Broken road problem on Brassai street</h5>
                             <i class="material-icons secondary-content btn-faded listing-arrow"> arrow_forward</i>
-                            Found at Brassai street, no 12 on January 2, 2016
+                            Found at Brassai street, no 12 on January 2, 2018
                             <br>
                             <h6 class="btn-faded">Edit</h6>
                         </a>
-                        <a href="#!" class="collection-item">
-                            <span class="new badge" data-badge-caption="Road problem"></span>
-                            <h5>Broken road problem on Brassai street</h5>
+                        <a href="${newProblem}" class="collection-item">
+                            <span class="new badge" data-badge-caption="Homeless people and beggars"></span>
+                            <h5>Beggars at Piata Unirii</h5>
                             <i class="material-icons secondary-content btn-faded listing-arrow"> arrow_forward</i>
-                            Found at Brassai street, no 12 on January 2, 2016
+                            Found at Piata Unirii, no 12 on January 1, 2018
                             <br>
                             <h6 class="btn-faded">Edit</h6>
                         </a>
-                        <a href="#!" class="collection-item">
+                        <a href="${newProblem}" class="collection-item">
                             <span class="new badge" data-badge-caption="Road problem"></span>
-                            <h5>Broken road problem on Brassai street</h5>
+                            <h5>A lot of garbage from a restaurant nearby</h5>
                             <i class="material-icons secondary-content btn-faded listing-arrow"> arrow_forward</i>
-                            Found at Brassai street, no 12 on January 2, 2016
+                            Found at Ciresilor street, no 7 on January 1, 2018
                             <br>
                             <h6 class="btn-faded">Edit</h6>
                         </a>
@@ -175,9 +120,9 @@
                     <div class="collection">
                         <a href="#!" class="collection-item">
                             <span class="new badge" data-badge-caption="Comment"></span>
-                            <h5>Broken road problem on Brassai street</h5>
+                            <h5>Drunk people sit here every night</h5>
                             <i class="material-icons secondary-content btn-faded listing-arrow"> arrow_forward</i>
-                            <span class="btn-faded">"I also noticed it today. The problem is still there."</span>
+                            <span class="btn-faded">"This is disturbance of public peace and should be taken care of."</span>
                             <br>
                         </a>
                         <a href="#!" class="collection-item">

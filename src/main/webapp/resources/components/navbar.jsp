@@ -67,6 +67,7 @@
 <ul id="logout-dropdown" class="dropdown-content logout-drop">
     <li class="drop-text">
         <a href="${login}">Logout</a>
+        <a href="${userProfile}">Profile</a>
     </li>
 </ul>
 
