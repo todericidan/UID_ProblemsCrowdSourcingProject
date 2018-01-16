@@ -9,6 +9,8 @@
 <c:url var="notifiersChart" value="/chartNotifiers"/>
 <c:url var="search" value="/searchResults"/>
 <c:url var="userProfile" value="/myProfile"/>
+<c:url var="help" value="/help"/>
+<c:url var="contact" value="/contact"/>
 <c:url var="login" value="/login"/>
 
 <style type="text/css">
@@ -38,8 +40,8 @@
                 <li><a href="${cityOverview}">City Overview</a></li>
                 <!-- Dropdown Trigger -->
                 <li><a class="dropdown-button" href="#!" data-activates="statistics-dropdown">Statistics</a></li>
-                <li><a>Help</a></li>
-                <li><a>Contact</a></li>
+                <li><a href="${help}">Help</a></li>
+                <li><a href="${contact}">Contact</a></li>
                 <li><a href="${userProfile}">Jane Doe</a></li>
                 <li><a class="dropdown-button" href="#!" data-activates="logout-dropdown"> <img href="${userProfile}" class="user-img" src="https://cdn3.iconfinder.com/data/icons/business-round-flat-vol-1-1/36/user_account_profile_avatar_person_student_female-512.png"/></a></li>
             </ul>
