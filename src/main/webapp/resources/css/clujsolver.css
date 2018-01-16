@@ -269,6 +269,7 @@
 
 .details-actions{
     padding: 20px;
+    padding-bottom: 0px;
     float: right;
 }
 .details-map{

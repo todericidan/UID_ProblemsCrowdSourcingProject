@@ -46,12 +46,12 @@
 
         <div class="row">
             <div class="col">
-                <button type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4">Ban user</button>
+                <button type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4" id="banUser">Ban user</button>
             </div>
 
 
             <div class="col">
-                <button type="submit" name="action" class="waves-effect waves-light btn btn-right cyan darken-3">Send notification</button>
+                <button type="submit" name="action" class="waves-effect waves-light btn btn-right cyan darken-3" id="notifyUser">Send notification</button>
             </div>
 
         </div>
@@ -74,6 +74,17 @@ window.onload = function() {
 	var mail = getParameterByName("mail", window.location.href);
 	document.getElementById("user").innerHTML = mail;
 	};
+</script>
+
+<script language="Javascript">
+    $(document).ready(function() {
+        $('#banUser').click( function(){
+            Materialize.toast('User has been banned!', 4000)
+        });
+        $('#notifyUser').click( function(){
+            Materialize.toast('User has been notified!', 4000)
+        });
+    });
 </script>
 
 </body>

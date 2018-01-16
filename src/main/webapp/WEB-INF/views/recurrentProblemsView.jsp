@@ -150,7 +150,7 @@
 
 		 <div class="row" id="btns">
             <div class="col">
-                <button type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4">Keep selected problem</button>
+                <button id="keep" type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4">Keep selected problem</button>
             </div>
 
 
@@ -184,7 +184,7 @@
 
         <div class="row">
             <div class="col">
-                <button type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4">CREATE</button>
+                <button id="createNew" type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4">CREATE</button>
             </div>
         </div>
 
@@ -269,4 +269,15 @@ function mark(imageId) {
 	else
 		document.getElementById(imageId).style.border = "";
 }
+</script>
+
+<script language="Javascript">
+    $(document).ready(function() {
+        $('#keep').click( function(){
+            Materialize.toast('The selected problem will be kept!', 4000)
+        });
+        $('#createNew').click( function(){
+            Materialize.toast('A new problem has been created!', 4000)
+        });
+    });
 </script>

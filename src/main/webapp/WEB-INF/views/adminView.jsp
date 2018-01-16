@@ -112,16 +112,16 @@
 
 <script>
     document.getElementById("btn1").onclick = function () {
-        location.href = "/ClujSolver/notifyUser?mail=instalatoru@yahoo.com";
+        location.href = "/notifyUser?mail=instalatoru@yahoo.com";
     };
     document.getElementById("btn2").onclick = function () {
-        location.href = "/ClujSolver/notifyUser?mail=yon@gmail.com";
+        location.href = "/notifyUser?mail=yon@gmail.com";
     };
     document.getElementById("btn3").onclick = function () {
-        location.href = "/ClujSolver/notifyUser?mail=user@example.com";
+        location.href = "/notifyUser?mail=user@example.com";
     };
     document.getElementById("btn4").onclick = function () {
-        location.href = "/ClujSolver/notifyUser?mail=abcd@yahoo.com";
+        location.href = "/notifyUser?mail=abcd@yahoo.com";
     };
 </script>
 

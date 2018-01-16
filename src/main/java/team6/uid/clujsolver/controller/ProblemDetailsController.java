@@ -5,11 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import team6.uid.clujsolver.model.Category;
 import team6.uid.clujsolver.model.CommunityProblem;
 import team6.uid.clujsolver.model.Status;
-import team6.uid.clujsolver.model.Urgency;
 import team6.uid.clujsorver.service.ProblemService;
 
 import javax.servlet.http.HttpSession;
@@ -28,6 +26,8 @@ public class ProblemDetailsController {
         CommunityProblem communityProblem = problemService.getProblemById(id);
 
         model.addAttribute("problem",communityProblem);
+
+        System.out.println("USER  " + session.getAttribute("user"));
 
         return "problemDetails";
     }
