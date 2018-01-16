@@ -18,39 +18,88 @@
 
 <body class="blue-grey lighten-5">
 <div class="row">
-    <div class="container grey lighten-5">
+    <div class="container">
 
-        <div class="profile-header grey lighten-5 card row">
+        <div class="profile-header card row" style="background-color: #70b6bd">
             <div class="profile-header-section">
                 <img class="user-img profile-picture" src="https://cdn3.iconfinder.com/data/icons/business-round-flat-vol-1-1/36/user_account_profile_avatar_person_student_female-512.png"></img>
             </div>
 
             <div class="profile-header-section profile-text">
-                <h3>Jane Doe</h3>
-                <h6>Problem Solver of the Month  <i class="material-icons">verified_user</i></h6>
-                <h5 class="petrol">1450 Points</h5>
+                <h3 class="white-smoke">Jane Doe</h3>
+                <h6 class="white-smoke">Problem Solver of the Month  <i class="material-icons white-smoke">verified_user</i></h6>
+                <div class="chip">
+                    1450 Points
+                </div>
             </div>
 
             <div class="profile-header-section">
-                <h5>To do</h5>
+                <h5 class="white-smoke">To do</h5>
                 <ul class="collection">
                     <c:forEach items="${problems}" var="problem">
                         <c:if test="${problem.status.title().equals('Currently solving')}">
-                            <li>
+
                                 <a href="<c:url value="/problemDetails/${problem.id}"/>" class="collection-item avatar avatar-search bar">
                                     <img class="material-icons circle" src="${problem.imageUrls.get(0)}"/>
                                     <div class="search-result">
                                         <span class="title">${problem.title}</span>
-                                        <p>Signaled under ${problem.category.title()}<br><span class="new badge"></span>
-                                                ${problem.urgencyLevel.title()}
+                                        <p class="petrol">${problem.category.title()}<br>
+                                                Urgency: ${problem.urgencyLevel.title()}
                                         </p>
                                     </div>
                                     <div class="secondary-content modal-action btn-faded to-do-arrow"><i class="material-icons">arrow_forward</i></div>
                                 </a>
-                            </li>
+
                         </c:if>
                     </c:forEach>
                 </ul>
+            </div>
+            <div >
+                <div class="carousel">
+                    <h5 class="badges-header">Badges</h5>
+                    <a class="carousel-item" href="#one!">
+                        <img src="${pageContext.request.contextPath}/resources/img/badge4.png">
+                        <div class="chip badge-title">
+                            Solver of the Month
+                        </div>
+                    </a>
+                    <a class="carousel-item" href="#one!">
+                        <img src="${pageContext.request.contextPath}/resources/img/badge5.png">
+                        <div class="chip badge-title">
+                            30 Problems Solved
+                        </div>
+                    </a>
+                    <a class="carousel-item" href="#one!">
+                        <img src="${pageContext.request.contextPath}/resources/img/badge6.png">
+                        <div class="chip badge-title">
+                            2nd Best Solver
+                        </div>
+                    </a>
+                    <a class="carousel-item" href="#one!">
+                        <img src="${pageContext.request.contextPath}/resources/img/badge7.png">
+                        <div class="chip badge-title">
+                            400 Validations
+                        </div>
+                    </a>
+                    <a class="carousel-item" href="#one!">
+                        <img src="${pageContext.request.contextPath}/resources/img/badge8.png">
+                        <div class="chip badge-title">
+                            500 Reactions
+                        </div>
+                    </a>
+                    <a class="carousel-item" href="#one!">
+                        <img src="${pageContext.request.contextPath}/resources/img/badge1.png">
+                        <div class="chip badge-title">
+                            Efficient Solver
+                        </div>
+                    </a>
+                    <a class="carousel-item" href="#one!">
+                        <img src="${pageContext.request.contextPath}/resources/img/badge2.png">
+                        <div class="chip badge-title">
+                            Top Contributor
+                        </div>
+                    </a>
+                </div>
             </div>
 
         </div>
@@ -151,6 +200,10 @@
 </body>
 
 
-
+<script language="JavaScript">
+    $(document).ready(function(){
+        $('.carousel').carousel();
+    });
+</script>
 
 </html>

@@ -268,7 +268,7 @@
 }
 
 .details-actions{
-    padding: 15px;
+    padding: 20px;
     float: right;
 }
 .details-map{
@@ -277,4 +277,25 @@
 
 .petrol{
     color: #00838f;
+}
+
+.carousel{
+    height: 293px !important;
+    background-color: #00838f;
+}
+
+.badge-title{
+    margin-left: 21px;
+    width: 80%;
+    text-align: center;
+}
+
+.badges-header{
+    color: whitesmoke;
+    margin-left: 30px;
+}
+
+.white-smoke{
+    color: whitesmoke;
+
 }
