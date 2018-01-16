@@ -168,7 +168,7 @@
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="description" class="materialize-textarea"></textarea>
+                        <input name="title" id="title" type="text" class="validate" required="" aria-required="true">
                         <label for="description">Description</label>
                     </div>
                     <div id="images" style="display: inline;">
@@ -275,9 +275,20 @@ function mark(imageId) {
     $(document).ready(function() {
         $('#keep').click( function(){
             Materialize.toast('The selected problem will be kept!', 4000)
+            setInterval(function () {
+                location.href = "/admin";
+		    }, 4000);
         });
         $('#createNew').click( function(){
-            Materialize.toast('A new problem has been created!', 4000)
+        	if(document.getElementById('title').value.length > 9){
+	            Materialize.toast('A new problem has been created!', 4000)
+	            setInterval(function () {
+	                location.href = "/admin";
+			    }, 4000);
+        	}
+        	else{
+        		Materialize.toast('The description is too short!', 4000)
+        	}
         });
     });
 </script>

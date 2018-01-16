@@ -36,7 +36,7 @@
 			          <label for="user">User</label>
 			        </div>
                     <div class="input-field col s12">
-                        <textarea id="description" class="materialize-textarea"></textarea>
+                        <input name="title" id="title" type="text" class="validate" required="" aria-required="true">
                         <label for="description">Message</label>
                     </div>
                     
@@ -79,10 +79,27 @@ window.onload = function() {
 <script language="Javascript">
     $(document).ready(function() {
         $('#banUser').click( function(){
-            Materialize.toast('User has been banned!', 4000)
+        	if(document.getElementById('title').value.length > 9){
+	            Materialize.toast('User has been banned!', 4000);
+	            setInterval(function () {
+	                location.href = "/admin";
+			    }, 4000);
+        	}
+        	else{
+        		Materialize.toast('The message is too short!', 4000)
+        	}
         });
         $('#notifyUser').click( function(){
-            Materialize.toast('User has been notified!', 4000)
+        	if(document.getElementById('title').value.length > 9){
+	            Materialize.toast('User has been notified!', 4000)
+	            setInterval(function () {
+	                location.href = "/admin";
+			    }, 4000);
+        	}
+        	else{
+        		Materialize.toast('The message is too short!', 4000)
+        	}
+
         });
     });
 </script>
