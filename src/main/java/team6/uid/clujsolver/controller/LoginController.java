@@ -24,7 +24,7 @@ public class LoginController {
             session.setAttribute("user","solver");
             return "redirect:/problems";
         }
-        if(email.equals("admin") && password.equals("admin")) {
+        if(email.equals("admin@gmail.com") && password.equals("admin")) {
 
             return "adminView";
         }
