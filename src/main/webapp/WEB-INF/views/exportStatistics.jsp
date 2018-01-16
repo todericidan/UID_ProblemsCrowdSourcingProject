@@ -30,8 +30,9 @@
             <span class="grey-text text-darken-1 lighten-3 col s2">Time</span>
             <span class="grey-text text-darken-1 lighten-3 col s2">Institution</span>
             <span class="grey-text text-darken-1 lighten-3 col s2">Description</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">Start Date</span>
-            <span class="grey-text text-darken-1 lighten-3 col s2">End Date</span>
+            <span class="grey-text text-darken-1 lighten-3 col s2">Type</span>
+            <span class="grey-text text-darken-1 lighten-3 col s1">Start Date</span>
+            <span class="grey-text text-darken-1 lighten-3 col s1">End Date</span>
             <span class="grey-text text-darken-1 lighten-3 col s2"></span>
         </div>
     </div>
@@ -42,8 +43,9 @@
                 <span class="grey-text text-darken-1 lighten-3 col s2">${request.requestIssueDate}</span>
                 <span class="grey-text text-darken-1 lighten-3 col s2">${request.institution}</span>
                 <span class="grey-text text-darken-1 lighten-3 col s2">${request.description}</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">${request.startDate}</span>
-                <span class="grey-text text-darken-1 lighten-3 col s2">${request.endDate}</span>
+                <span class="grey-text text-darken-1 lighten-3 col s2">${request.type}</span>
+                <span class="grey-text text-darken-1 lighten-3 col s1">${request.startDate}</span>
+                <span class="grey-text text-darken-1 lighten-3 col s1">${request.endDate}</span>
                 <span class="grey-text text-darken-1 lighten-3 col s2">
                     <button id="submit_${loop.index}" type="submit" name="action" class="waves-effect waves-light btn-large amber darken-4">Validate</button>
                 </span>

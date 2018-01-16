@@ -5,6 +5,7 @@
 <c:url var="newProblem" value="/newProblem"/>
 <c:url var="cityOverview" value="/admin"/>
 <c:url var="recurrent" value="/recurrent"/>
+<c:url var="export" value="/exportStatistics"/>
 
 <style type="text/css">
 
@@ -32,6 +33,7 @@
 
                 <li><a href="${cityOverview}">Admin dashboard</a></li>
                 <li><a href="${recurrent}">Handle recurrent problems</a></li>
+                <li><a href="${export}">Export Statistics</a></li>
             </ul>
         </div>
     </div>

@@ -7,6 +7,7 @@ public class RequestStatistic {
     private String description;
     private String startDate;
     private String endDate;
+    private String type;
 
 
     public RequestStatistic() {
@@ -50,5 +51,13 @@ public class RequestStatistic {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

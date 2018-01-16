@@ -17,18 +17,20 @@ public class AdminController {
 
     public ArrayList<RequestStatistic> prepareStatistics(){
         RequestStatistic requestStatistic = new RequestStatistic();
-        requestStatistic.setRequestIssueDate("22-10-2016");
-        requestStatistic.setDescription("Descr 1");
-        requestStatistic.setInstitution("Institution 1");
-        requestStatistic.setStartDate("20-11-2016");
-        requestStatistic.setEndDate("26-11-2016");
+        requestStatistic.setRequestIssueDate("22-10-2017");
+        requestStatistic.setDescription("We would like to give a few rewards to our most involved citizens in the problems of the community");
+        requestStatistic.setInstitution("Primaria Cluj");
+        requestStatistic.setType("User situation");
+        requestStatistic.setStartDate("01-01-2017");
+        requestStatistic.setEndDate("31-12-2017");
 
         RequestStatistic requestStatistic2 = new RequestStatistic();
-        requestStatistic2.setRequestIssueDate("22-10-2016");
-        requestStatistic2.setDescription("Descr 1");
-        requestStatistic2.setInstitution("Institution 1");
-        requestStatistic2.setStartDate("20-11-2016");
-        requestStatistic2.setEndDate("26-11-2016");
+        requestStatistic2.setRequestIssueDate("10-01-2018");
+        requestStatistic2.setDescription("We would like to get details about the places having a greater density of problems");
+        requestStatistic2.setInstitution("Consiliul Local");
+        requestStatistic2.setType("Problems situation");
+        requestStatistic2.setStartDate("15-09-2017");
+        requestStatistic2.setEndDate("15-01-2018");
 
         requestStatistics.add(requestStatistic);
         requestStatistics.add(requestStatistic2);

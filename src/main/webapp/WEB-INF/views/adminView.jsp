@@ -72,14 +72,16 @@
                 <h5>Export requests</h5>
             </div>
             <div class="card-content grey lighten-4">
-                <div id="solvedProblems">
+                <div id="solvedPrbs">
                     <div class="collection">
-                    	<c:forEach items="${requests}" var="request">
-	                        <a class="collection-item">
-	                            <button type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4" style="display: inline; float: right;" id="btn12">Validate</button>
+                    	<c:forEach items="${requests}" var="request" varStatus="loop">
+	                        <a id="single_request_${loop.index}" class="collection-item">
+	                            <button id="submit_${loop.index}" type="submit" name="action" class="waves-effect waves-light btn btn-right amber darken-4" style="display: inline; float: right;">Validate</button>
 	                            <h5>${request.institution} on ${request.requestIssueDate}</h5>
 	                            Start date: ${request.startDate} | End date: ${request.endDate}
 	                            <br>
+                                Type: ${request.type}
+                                <br>
 	                            ${request.description}
 	                        </a>
                         </c:forEach>
@@ -121,6 +123,24 @@
     document.getElementById("btn4").onclick = function () {
         location.href = "/ClujSolver/notifyUser?mail=abcd@yahoo.com";
     };
+</script>
+
+<script language="Javascript">
+    $(document).ready(function () {
+        $('select').material_select();
+        $(function () {
+            $('#submit_0').click(function () {
+                $('#single_request_0').fadeOut(800);
+                Materialize.toast('The request has been approved', 4000)
+            });
+        });
+        $(function () {
+            $('#submit_1').click(function () {
+                $('#single_request_1').fadeOut(800);
+                Materialize.toast('The request has been approved', 4000)
+            });
+        });
+    });
 </script>
 
 
