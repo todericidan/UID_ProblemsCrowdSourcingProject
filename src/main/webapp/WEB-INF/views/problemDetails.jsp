@@ -58,7 +58,7 @@
                 <c:if test="${problem.status.title().equals('Solved')}">
                     <button id="validate_btn" class="waves-effect waves-light btn amber darken-4">Validate</button>
                 </c:if>
-                <c:if test="${problem.status.title().equals('Unsolved')}">
+                <c:if test="${problem.status.title().equals('Unsolved') && user.equals('solver')}">
                     <button id="take_btn" class="waves-effect waves-light btn amber darken-4">I will solve this!</button>
                 </c:if>
 

@@ -10,7 +10,6 @@ import team6.uid.clujsolver.model.Popularity;
 import team6.uid.clujsolver.model.Status;
 import team6.uid.clujsolver.model.Urgency;
 import team6.uid.clujsorver.service.ProblemService;
-import team6.uid.clujsorver.service.convertor.ProblemConvertor;
 
 import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
@@ -43,6 +42,7 @@ public class BrowsingProblemsController {
         session.setAttribute("statusTypes", Status.values());
         session.setAttribute("urgencyTypes", Urgency.values());
 
+        System.out.println("USER  " + session.getAttribute("user"));
         return "communityProblemsView";
     }
 

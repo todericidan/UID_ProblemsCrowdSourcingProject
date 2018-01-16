@@ -27,13 +27,16 @@
 
             <div class="profile-header-section profile-text">
                 <h3 class="white-smoke">Jane Doe</h3>
-                <h6 class="white-smoke">Problem Solver of the Month  <i class="material-icons white-smoke">verified_user</i></h6>
+                <c:if test="${user.equals('solver')}">
+                    <h6 class="white-smoke">Problem Solver of the Month  <i class="material-icons white-smoke">verified_user</i></h6>
+                </c:if>
                 <div class="chip">
                     1450 Points
                 </div>
             </div>
 
             <div class="profile-header-section">
+            <c:if test="${user.equals('solver')}">
                 <h5 class="white-smoke">To do</h5>
                 <ul class="collection">
                     <c:forEach items="${problems}" var="problem">
@@ -53,10 +56,13 @@
                         </c:if>
                     </c:forEach>
                 </ul>
+            </c:if>
             </div>
             <div >
                 <div class="carousel">
                     <h5 class="badges-header">Badges</h5>
+
+                    <c:if test="${user.equals('solver')}">
                     <a class="carousel-item" href="#one!">
                         <img src="${pageContext.request.contextPath}/resources/img/badge4.png">
                         <div class="chip badge-title">
@@ -76,6 +82,13 @@
                         </div>
                     </a>
                     <a class="carousel-item" href="#one!">
+                    <img src="${pageContext.request.contextPath}/resources/img/badge1.png">
+                    <div class="chip badge-title">
+                    Efficient Solver
+                    </div>
+                    </a>
+                    </c:if>
+                    <a class="carousel-item" href="#one!">
                         <img src="${pageContext.request.contextPath}/resources/img/badge7.png">
                         <div class="chip badge-title">
                             400 Validations
@@ -87,12 +100,7 @@
                             500 Reactions
                         </div>
                     </a>
-                    <a class="carousel-item" href="#one!">
-                        <img src="${pageContext.request.contextPath}/resources/img/badge1.png">
-                        <div class="chip badge-title">
-                            Efficient Solver
-                        </div>
-                    </a>
+
                     <a class="carousel-item" href="#one!">
                         <img src="${pageContext.request.contextPath}/resources/img/badge2.png">
                         <div class="chip badge-title">
@@ -113,12 +121,15 @@
             </div>
             <div class="card-tabs">
                 <ul class="tabs tabs-fixed-width">
-                    <li class="tab"><a class="active" href="#solvedProblems">Solved Problems</a></li>
+                    <c:if test="${user.equals('solver')}">
+                        <li class="tab"><a class="active" href="#solvedProblems">Solved Problems</a></li>
+                    </c:if>
                     <li class="tab"><a href="#problemDrafts">Problem Drafts</a></li>
                     <li class="tab"><a href="#comments">Comments and Reactions</a></li>
                 </ul>
             </div>
             <div class="card-content grey lighten-4">
+            <c:if test="${user.equals('solver')}">
                 <div id="solvedProblems">
                     <div class="collection">
                         <c:forEach items="${problems}" var="problem">
@@ -135,6 +146,7 @@
                         </c:forEach>
                     </div>
                 </div>
+                </c:if>
 
                 <div id="problemDrafts">
                     <div class="collection">

@@ -149,8 +149,6 @@
 
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action waves-effect waves-green btn-flat"><i class="material-icons">thumb_up</i></a>
-            <a href="#!" class="modal-action waves-effect waves-red btn-flat"><i class="material-icons">thumb_down</i></a>
             <a id="problemDetailsPage" href="" class="modal-action waves-effect waves-green btn">MORE DETAILS</a>
             <a href="#!" id="done-modal" class="modal-action modal-close waves-effect waves-green btn-flat">DONE</a>
         </div>
