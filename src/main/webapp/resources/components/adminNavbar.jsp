@@ -4,6 +4,7 @@
 
 <c:url var="newProblem" value="/newProblem"/>
 <c:url var="cityOverview" value="/admin"/>
+<c:url var="logout" value="/login"/>
 <c:url var="recurrent" value="/recurrent"/>
 <c:url var="export" value="/exportStatistics"/>
 
@@ -34,6 +35,7 @@
                 <li><a href="${cityOverview}">Admin dashboard</a></li>
                 <li><a href="${recurrent}">Handle recurrent problems</a></li>
                 <li><a href="${export}">Export Statistics</a></li>
+                <li><a href="${logout}">Logout</a></li>
             </ul>
         </div>
     </div>

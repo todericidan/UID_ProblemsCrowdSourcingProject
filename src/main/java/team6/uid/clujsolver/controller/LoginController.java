@@ -5,12 +5,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import team6.uid.clujsorver.service.ProblemService;
 
 import javax.servlet.http.HttpSession;
 
 
 @Controller
 public class LoginController {
+    private ProblemService service;
+
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String showLoginPage(){
 
@@ -25,8 +28,11 @@ public class LoginController {
             return "redirect:/problems";
         }
         if(email.equals("admin@gmail.com") && password.equals("admin")) {
-
-            return "adminView";
+            if(session.getAttribute("problems") == null){
+                service = ProblemService.getInstance();
+                session.setAttribute("problems",service.getProblems());
+            }
+            return "redirect:/admin";
         }
         if(email.equals("janedont@gmail.com") && password.equals("parola")){
             session.setAttribute("user","notifier");

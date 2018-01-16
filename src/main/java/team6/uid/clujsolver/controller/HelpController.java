@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HelpController {
     @RequestMapping(value = "/help",method = RequestMethod.GET)
     public String HelpPage(){
-        return "help";
+        return "helpView";
     }
 }
